@@ -153,6 +153,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCard: {fileID: 0}
+  params_:
+    NumNewCardsInTurn: 1
+    NumInitialCards: 6
+    MaxAttractiveness: 100
+    InitialAttractivenessnMean: 50
+    InitialAttractivenessRange: 40
+    AttractivenessDecreaseStep: 2
+    MaxDesparation: 100
+    InitialDesparationMean: 50
+    InitialDesparationRange: 40
+    DesparationIncreaseStep: 10
+    DesparationDecreaseStep: 5
+    DesparationBreakupStep: 10
+    NumberOfTraits: 3
+    MaxCards: 30
+    DatingDesparationThreshold: 0.7
+    DatingFullDesparationBias: 1
+    DatingSemiDesparationBias: 0.2
+    InLoveDesparationThreshold: 0.7
+    InLoveFullDesparationBias: 1
+    InLoveSemiDesparationBias: 0.2
+    MarriedDesparationThreshold: 0.7
+    MarriedFullDesparationBias: 1
+    MarriedSemiDesparationBias: 0.2
 --- !u!4 &224934963
 Transform:
   m_ObjectHideFlags: 0
@@ -518,6 +542,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 224934962}
     - target: {fileID: 4527554077457348580, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: state
+      value: 
+      objectReference: {fileID: 224934962}
+    - target: {fileID: 4815499986407064975, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: state
       value: 
       objectReference: {fileID: 224934962}

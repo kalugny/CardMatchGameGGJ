@@ -3,11 +3,9 @@ using System;
 using System.IO;
 using UnityEngine;
 
-class Utils {
-}
 
 
-class GameLogic {
+public class GameLogic {
     // This class represents the state of the game at a single turn
 
     public Deck deck;
@@ -23,8 +21,8 @@ class GameLogic {
         Debug.Log(traitMatching);
     }
 
-    public void CreateNewMatch(int cardIndex1, int cardIndex2) {
-        matches.Add(deck.CreateNewMatch(cardIndex1, cardIndex2, traitMatching));
+    public void CreateNewMatch(GameCard card1, GameCard card2) {
+        matches.Add(new Match(card1, card2, traitMatching, params_));
     }
 
     public void PlayTurn() {
@@ -70,14 +68,14 @@ class GameLogic {
     }
 }
 
-class GameCard {
+public class GameCard {
     public Gender gender;
     public Gender[] preferredGenders;
     public int attractiveness;
     public int desperation;
     public List<Trait> traits = new List<Trait>();
     public bool isBeingMatched;
-    System.Random _R = new System.Random();
+    // System.Random _R = new System.Random();
 
     Params params_;
 
@@ -89,7 +87,7 @@ class GameCard {
         this.preferredGenders[0] = this.RandomEnumValue<Gender>();
 
         // this.attractiveness = _R.Next(GameLogic.params_.InitialAttractivenessnMean - GameLogic.params_.InitialAttractivenessRange / 2,  GameLogic.params_.InitialAttractivenessnMean + GameLogic.params_.InitialAttractivenessRange / 2);
-        this.desperation = _R.Next(params_.InitialAttractivenessnMean - params_.InitialDesparationRange / 2, params_.InitialAttractivenessnMean + params_.InitialDesparationRange / 2);
+        this.desperation = UnityEngine.Random.Range(params_.InitialAttractivenessnMean - params_.InitialDesparationRange / 2, params_.InitialAttractivenessnMean + params_.InitialDesparationRange / 2);
 
         for (int i=0 ; i < params_.NumberOfTraits ; i++) {
             Trait newTrait = this.RandomEnumValue<Trait>();
@@ -102,11 +100,11 @@ class GameCard {
 
         this.isBeingMatched = false;
     }
-    
+
     T RandomEnumValue<T> ()
     {
         var v = Enum.GetValues (typeof (T));
-        return (T) v.GetValue(_R.Next(0, v.Length));
+        return (T) v.GetValue(UnityEngine.Random.Range(0, v.Length));
     }
 
     public string GetDescription() {
@@ -135,7 +133,7 @@ class GameCard {
     }
 }
 
-class Deck {
+public class Deck {
     public List<GameCard> cards = new List<GameCard>();
 
     Params params_;
@@ -146,20 +144,20 @@ class Deck {
     }
 
     public void DrawCards(int numCards) {
-        // TODO: how many cards? how do me make sure there are enough possible matches, at least in the sense of preferred gender? 
-        for (int i = 0 ; i < numCards ; i++) {   
+        // TODO: how many cards? how do me make sure there are enough possible matches, at least in the sense of preferred gender?
+        for (int i = 0 ; i < numCards ; i++) {
             if (cards.Count >= params_.MaxCards) {
                 return;
-            }  
+            }
 
-            Console.WriteLine ("Adding new card");  
+            Console.WriteLine ("Adding new card");
             cards.Add(new GameCard(params_));
         }
     }
 
     public List<GameCard> GetHand() {
         List<GameCard> hand = new List<GameCard>();
-        
+
         foreach (GameCard card in this.cards) {
             if (!card.isBeingMatched) {
                 hand.Add(card);
@@ -167,10 +165,6 @@ class Deck {
         }
 
         return hand;
-    }
-
-    public Match CreateNewMatch(int cardIndex1, int cardIndex2, TraitMatching traitMatching) {
-        return new Match(cards[cardIndex1], cards[cardIndex2], traitMatching, params_);
     }
 
     public void AgeCards() {
@@ -188,10 +182,10 @@ class Deck {
     }
 }
 
-class Match {
+public class Match {
     public MatchLevel level;
     public GameCard card1, card2;
-    
+
     public TraitMatching traitMatching;
 
     public Params params_;
@@ -231,15 +225,15 @@ class Match {
 
         double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
-        double advanceThreshold = 0;
+        double advanceThreshold;
 
-        if (card1.desperation >= params_.InLoveDesparationThreshold &&
-            card2.desperation >= params_.InLoveDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.InLoveFullDesparationBias;
+        if (card1.desperation >= params_.DatingDesparationThreshold &&
+            card2.desperation >= params_.DatingDesparationThreshold) {
+            advanceThreshold = traitsScore + params_.DatingFullDesparationBias;
         }
-        else if (card1.desperation >= params_.InLoveDesparationThreshold ||
-            card2.desperation >= params_.InLoveDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.InLoveSemiDesparationBias;
+        else if (card1.desperation >= params_.DatingDesparationThreshold ||
+            card2.desperation >= params_.DatingDesparationThreshold) {
+            advanceThreshold = traitsScore + params_.DatingSemiDesparationBias;
         }
         else {
             advanceThreshold = traitsScore;
@@ -254,9 +248,21 @@ class Match {
 
         double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
-        double advanceThreshold = 0.5;
-        
-        AdvanceToNextLevel(advanceThreshold, MatchLevel.InLove);
+        double advanceThreshold;
+
+        if (card1.desperation >= params_.InLoveDesparationThreshold &&
+            card2.desperation >= params_.InLoveDesparationThreshold) {
+            advanceThreshold = traitsScore + params_.InLoveFullDesparationBias;
+        }
+        else if (card1.desperation >= params_.InLoveDesparationThreshold ||
+            card2.desperation >= params_.InLoveDesparationThreshold) {
+            advanceThreshold = traitsScore + params_.InLoveSemiDesparationBias;
+        }
+        else {
+            advanceThreshold = traitsScore;
+        }
+
+        AdvanceToNextLevel(advanceThreshold, MatchLevel.Married);
     }
 
     public void PlayMarriedLevel() {
@@ -265,18 +271,26 @@ class Match {
 
         double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
-        double advanceThreshold = 0.5;
-        
-        AdvanceToNextLevel(advanceThreshold, MatchLevel.InLove);
-    }
+        double advanceThreshold;
 
-    public double GetTraitMatchingScore() {
-        return 0.5;
+        if (card1.desperation >= params_.MarriedDesparationThreshold &&
+            card2.desperation >= params_.MarriedDesparationThreshold) {
+            advanceThreshold = traitsScore + params_.MarriedFullDesparationBias;
+        }
+        else if (card1.desperation >= params_.MarriedDesparationThreshold ||
+            card2.desperation >= params_.MarriedDesparationThreshold) {
+            advanceThreshold = traitsScore + params_.MarriedSemiDesparationBias;
+        }
+        else {
+            advanceThreshold = traitsScore;
+        }
+
+        AdvanceToNextLevel(advanceThreshold, MatchLevel.HappyEverAfter);
     }
 
     void AdvanceToNextLevel(double advanceThreshold, MatchLevel nextLevel) {
-        System.Random rand = new System.Random();
-        double advanceProb = rand.NextDouble();
+        // System.Random rand = new System.Random();
+        double advanceProb = UnityEngine.Random.value;
 
         if (advanceProb > advanceThreshold) {
             this.level = nextLevel;
@@ -294,7 +308,7 @@ class Match {
     }
 }
 
-class TraitMatching {
+public class TraitMatching {
     int[,] table;
 
     public TraitMatching(string csvPath) {
@@ -371,7 +385,7 @@ class TraitMatching {
     }
 }
 
-enum MatchLevel {
+public enum MatchLevel {
     Dating,
     InLove,
     Married,
@@ -379,13 +393,13 @@ enum MatchLevel {
     Breakup
 }
 
-enum Gender {
+public enum Gender {
     Female,
     Male
 }
 
-enum Trait {
-    CatPerson, 
+public enum Trait {
+    CatPerson,
     DogPerson,
     Introvert,
     Extrovert,

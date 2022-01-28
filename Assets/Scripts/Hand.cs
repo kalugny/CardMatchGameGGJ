@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class Hand : MonoBehaviour
 {
 
     public GameObject cardPrefab;
-    public GameLogic state;
+    public State state;
 
-    public List<GameCard> cards = new List<GameCard>();
+    public List<Card> cards = new List<Card>();
     public int initialCards = 8;
     public float paddingBetweenCards = 0.1f;
     public float maxWidth = 9f;
 
     void Start()
     {
-        for (int i = 0; i < initialCards; i++){
-            GenerateNewCard();
+        List<GameCard> gameCards = state.logic.GetHand();
+        foreach (GameCard c in gameCards){
+            GenerateNewCard(c);
         }
         SpreadCards();
     }
@@ -27,10 +30,20 @@ public class Hand : MonoBehaviour
         
     }
 
-    void GenerateNewCard(){
+    void GenerateNewCard(GameCard gc){
         GameObject newCard = Instantiate(cardPrefab);
-        GameCard c = newCard.GetComponent<GameCard>();
+        Card c = newCard.GetComponent<Card>();
         c.state = state;
+        c.gameCard = gc;
+        ProfileImage p = newCard.GetComponentInChildren<ProfileImage>();
+        if (gc.gender == Gender.Male){
+            p.CreateMenProfile();
+        }
+        else {
+            p.CreateWomenProfile();
+        }
+        Text t = newCard.GetComponentInChildren<Text>();
+        t.text = String.Format("Desperation: {0}, Traits: {1}", gc.desperation, gc.traits[0]);
         cards.Add(c);
         newCard.transform.parent = transform;
         newCard.transform.localPosition = Vector3.zero;

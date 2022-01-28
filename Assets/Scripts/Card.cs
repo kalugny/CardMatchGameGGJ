@@ -9,16 +9,17 @@ public class Card : MonoBehaviour, IPointerDownHandler
     public State state;
     public Vector3 originalPos;
     public int baseSortingOrder = 12;
-    [TextArea]
-    public string text;
 
     public enum CardState {
         InHand,
         Selected,
-        InSpot
+        InSpot,
+        InMatch
     };
 
     public CardState cardState;
+
+    public GameCard gameCard;
     
     public GameObject cardRoot;
     public float scaleTo = 1.6f;
@@ -33,8 +34,6 @@ public class Card : MonoBehaviour, IPointerDownHandler
     {
         originalPos = transform.position;
 
-        Text t = GetComponentInChildren<Text>();
-        t.text = text;
 
         cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
         profileImage = GetComponentInChildren<ProfileImage>();

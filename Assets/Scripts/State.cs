@@ -45,7 +45,7 @@ public class State : MonoBehaviour
 
     public Params params_;
 
-    GameLogic logic;
+    public GameLogic logic;
 
     void Start()
     {

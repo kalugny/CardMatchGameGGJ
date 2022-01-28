@@ -26,13 +26,7 @@ public class ProfileImage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int gender = Random.Range(0, 2);
-        if (gender == 0){
-            CreateMenProfile();
-        }
-        else {
-            CreateWomenProfile();
-        }
+
     }
 
     // Update is called once per frame
@@ -51,7 +45,7 @@ public class ProfileImage : MonoBehaviour
         sr.sortingOrder = sortingOrder;
     }
 
-    void CreateMenProfile(){
+    public void CreateMenProfile(){
         int head = Random.Range(0, menHeads.Length);
         int shirt = Random.Range(0, menShirts.Length);
         int neckShadow = Random.Range(0, menNeckShadows.Length);
@@ -78,7 +72,7 @@ public class ProfileImage : MonoBehaviour
         }        
     }
 
-    void CreateWomenProfile(){
+    public void CreateWomenProfile(){
         int head = Random.Range(0, womenHeads.Length);
         int shirt = Random.Range(0, womenShirts.Length);
         int neckShadow = Random.Range(0, womenNeckShadows.Length);
