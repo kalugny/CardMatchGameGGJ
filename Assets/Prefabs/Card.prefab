@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 255dd7064e1104104881ade901dcb83f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -169,7 +169,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 13
   m_TargetDisplay: 0
 --- !u!114 &7338501121886248898
 MonoBehaviour:
@@ -255,15 +255,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4a35d8628a9410aabdb1f66a167337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 0}
+  originalPos: {x: 0, y: 0, z: 0}
+  baseSortingOrder: 12
+  text: "<b>Rob, 25</b>\nLoves cats and murdering innocenct babies.\nCOVID-19 is
+    a hoax!\nLooking for: victims \U0001F346\U0001F346"
+  cardState: 0
   cardRoot: {fileID: 395496102379975}
+  cardImage: {fileID: 0}
   scaleTo: 1.4
-  animationDuration: 1
+  animationDuration: 0.4
   scaleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.037498474
-      value: 0.99765015
+      time: 0
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -271,17 +278,18 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.9998735
-      value: 1.4015406
-      inSlope: 0.22661845
-      outSlope: 0.22661845
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.15472582
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  spot: {fileID: 0}
 --- !u!1 &7338501122914784650
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,8 +368,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "<b>Rob, 25</b>\nLoves cats and murdering innocenct babies.\nCOVID-19 is
-    a hoax!\nLooking for: victims \U0001F346\U0001F346"
+  m_Text: 
 --- !u!1 &7338501123297909210
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7338501123297909207}
-  - component: {fileID: 7338501123297909204}
+  - component: {fileID: 2106224840}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -393,54 +400,105 @@ Transform:
   m_Father: {fileID: 1391215924448650741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7338501123297909204
-SpriteRenderer:
+--- !u!114 &2106224840
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7338501123297909210}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7585763fda04e4ab2aa8dc02e5143e89, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3.9, y: 6.06}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e60149cabc24ca489593cf3404681b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrder: 12
+  menHeads:
+  - {fileID: 21300000, guid: 9d4dc88308a764d9195517d9989766b0, type: 3}
+  - {fileID: 21300000, guid: 6c8ee56a4d96a4dc18946daa9662a732, type: 3}
+  - {fileID: 21300000, guid: e20d3e910fe034295baa426e8232a063, type: 3}
+  - {fileID: 21300000, guid: cb598eed8b4204a1fad526d45a27b19e, type: 3}
+  - {fileID: 21300000, guid: 6aee513de6b4147bdabbfc3ba5bcd52a, type: 3}
+  - {fileID: 21300000, guid: e534e55edc6b84ff2a9c3a1ad7173611, type: 3}
+  - {fileID: 21300000, guid: 84cddde7852a34250b8fe7946fc2701e, type: 3}
+  menShirts:
+  - {fileID: 21300000, guid: cb18f97095bec4c1f861698f1622324a, type: 3}
+  - {fileID: 21300000, guid: eaff6fc1cb3a647cb9d6ad9bb7250f14, type: 3}
+  - {fileID: 21300000, guid: 1b4c433133bbb4e809afa88e955f2bb0, type: 3}
+  - {fileID: 21300000, guid: 47f8b4e4cc5c746fabf98c5b80b20f27, type: 3}
+  - {fileID: 21300000, guid: d92af97b14e85414d8fde31c616368e0, type: 3}
+  - {fileID: 21300000, guid: 581a530a177af4e9289806de03466249, type: 3}
+  - {fileID: 21300000, guid: c3a0f2dd784ca484d9cdcd16a3b94550, type: 3}
+  - {fileID: 21300000, guid: edd564887c85d43338bb8ede93e71005, type: 3}
+  - {fileID: 21300000, guid: 825327296e0db4b4588d94d8a46da510, type: 3}
+  - {fileID: 21300000, guid: cbdc034e683254cccbcf562c18f55452, type: 3}
+  menNeckShadows:
+  - {fileID: 21300000, guid: f3c4df9e24d9b43468aa28691fce0d45, type: 3}
+  menNoses:
+  - {fileID: 21300000, guid: 224f8e5e8fa6f41819f3d1f96f08f29f, type: 3}
+  menEyes:
+  - {fileID: 21300000, guid: 4fce57dc699244866bf94c68e48ea0b8, type: 3}
+  menMouths:
+  - {fileID: 21300000, guid: 839433ff23fd8441c84b623c202546df, type: 3}
+  - {fileID: 21300000, guid: 4f30fbfbbff5e4a0493eafe6f3d4ce0c, type: 3}
+  menHair:
+  - {fileID: 21300000, guid: b6a8a6080d1c64049bee14e177e0d7a5, type: 3}
+  - {fileID: 21300000, guid: 4833c0f39e2f84fc4ad587947d4c3964, type: 3}
+  - {fileID: 21300000, guid: 8c7eb946b422f415b95f9b735d32f399, type: 3}
+  - {fileID: 21300000, guid: 2589c36f8058a4167904736c53e66d80, type: 3}
+  - {fileID: 21300000, guid: 13f388136e82d4178a4f9df962247774, type: 3}
+  - {fileID: 21300000, guid: d590553e6b7db4fb6b445581c2256dbc, type: 3}
+  - {fileID: 21300000, guid: 6ed4191161aa545bc8a824ffc02715b8, type: 3}
+  - {fileID: 21300000, guid: f170bb47586ae42e891f4bd980b67a35, type: 3}
+  - {fileID: 21300000, guid: 8cd4c72bbaaaa4c46ae7709bf8f7bf53, type: 3}
+  - {fileID: 21300000, guid: e7fb8ef16615f4297856d0e1645a6aa0, type: 3}
+  - {fileID: 21300000, guid: cfd820525f96c445f928aa8800fb6f73, type: 3}
+  - {fileID: 21300000, guid: 1e4164489d8dd4907bd51d85291989d2, type: 3}
+  - {fileID: 21300000, guid: ca271afbf5b3145a38d78196b8e9eac8, type: 3}
+  menEyebrows:
+  - {fileID: 21300000, guid: 054e78b0ea17747239f7a47dd725258d, type: 3}
+  menBeards:
+  - {fileID: 21300000, guid: 1ee6c014f0346432ebee66ed246acb8f, type: 3}
+  - {fileID: 21300000, guid: 8346fbdc05f9f49d7817bc7868d59438, type: 3}
+  - {fileID: 21300000, guid: 61026099760ad478482cb2c24e21bb5a, type: 3}
+  - {fileID: 21300000, guid: 24b831867229c44b8b6f4bbe29b525f6, type: 3}
+  - {fileID: 21300000, guid: b98059ca0f00049859182df02e1f6a18, type: 3}
+  - {fileID: 21300000, guid: c842a5e799c544a0a98680e00961b395, type: 3}
+  - {fileID: 21300000, guid: e92dfea97b25742e8b1b1e093c22059c, type: 3}
+  - {fileID: 21300000, guid: 818788232c4154280ad235b664459d96, type: 3}
+  - {fileID: 21300000, guid: e9ea1863d5eaf47b7b57ac3b4db35000, type: 3}
+  - {fileID: 21300000, guid: cb6200863ef364de98e51981e66c958e, type: 3}
+  - {fileID: 21300000, guid: 8c3c2effedd4a406f869da9a877fbf49, type: 3}
+  - {fileID: 21300000, guid: 15fc99ab3972146d08f07486660a1a12, type: 3}
+  womenHeads:
+  - {fileID: 21300000, guid: c43591840f7b94e6ca635ed8053f5786, type: 3}
+  - {fileID: 21300000, guid: 68734ef0e912a4e2bb3119f1d804d2d8, type: 3}
+  - {fileID: 21300000, guid: 57b34d5be2de244deaf1a56ebf0b1a51, type: 3}
+  - {fileID: 21300000, guid: 15cb5740c61d143108d9cb06be37312b, type: 3}
+  - {fileID: 21300000, guid: 73347ed1be1cb46f3b8056d41aa28b28, type: 3}
+  - {fileID: 21300000, guid: d48440f6b8bd94e288d3bdf6128a9178, type: 3}
+  - {fileID: 21300000, guid: f1df91df9932f4431916a7de8a9c33ce, type: 3}
+  womenShirts:
+  - {fileID: 21300000, guid: 8da6b24e061684d7c93760f14d9a7e58, type: 3}
+  - {fileID: 21300000, guid: 89f683b75a2c24990956f505a39fa8be, type: 3}
+  - {fileID: 21300000, guid: 6924a6a2083cf44e19a8b2066b6e0ca0, type: 3}
+  - {fileID: 21300000, guid: 45255e8eab9bc43f49e36347458ddc46, type: 3}
+  - {fileID: 21300000, guid: fd3b65220944c4b3bb790a43b1e75fa7, type: 3}
+  - {fileID: 21300000, guid: 116975649201f4a12b7e8e995584153d, type: 3}
+  - {fileID: 21300000, guid: 2684bdb380ea647a283791406c9ade3e, type: 3}
+  womenNeckShadows:
+  - {fileID: 21300000, guid: 3d943df27528740bfbb0a1c27e584672, type: 3}
+  womenFaces:
+  - {fileID: 21300000, guid: 7b6765bcf12ea452ea1ffcd2c9546cdf, type: 3}
+  womenHair:
+  - {fileID: 21300000, guid: 269ba13a086a842d6a21f28f0b1ecd70, type: 3}
+  - {fileID: 21300000, guid: 2586d0a7669f04171bcad5e8bd066264, type: 3}
+  - {fileID: 21300000, guid: 0f549fcf10e3c41aa84e1d5b8eb01c2a, type: 3}
+  - {fileID: 21300000, guid: df8568f442d6644a3930830bffe3510f, type: 3}
+  - {fileID: 21300000, guid: dac5f66f2beb047368e8392273b53446, type: 3}
+  - {fileID: 21300000, guid: 69147136db92e4776a11112ef8819dae, type: 3}
+  - {fileID: 21300000, guid: 15522ef3e38104f6fac71a968ad53a4d, type: 3}
+  - {fileID: 21300000, guid: 552ea6b4470fb4ff483830640961d3c4, type: 3}
+  - {fileID: 21300000, guid: 36a75c885629041338b8a73359208a72, type: 3}
+  womenEyebrows:
+  - {fileID: 21300000, guid: 5fa9f9ac6c5594b479388f2af679444f, type: 3}

@@ -1,71 +1,153 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour, IPointerDownHandler
 {
-    new private Collider2D collider;
     public State state;
     public Vector3 originalPos;
-    private bool selected = false;
-    public bool placed = false;
+    public int baseSortingOrder = 12;
+    [TextArea]
+    public string text;
+
+    public enum CardState {
+        InHand,
+        Selected,
+        InSpot
+    };
+
+    public CardState cardState;
     
     public GameObject cardRoot;
-    public float scaleTo = 1.4f;
+    public float scaleTo = 1.6f;
     public float animationDuration = 1f;
     public AnimationCurve scaleCurve;
 
-    // Start is called before the first frame update
+    private ProfileImage profileImage;
+
+    public MatchSpot spot = null;
+
     void Start()
     {
-        collider = GetComponentInChildren<Collider2D>();
         originalPos = transform.position;
+
+        Text t = GetComponentInChildren<Text>();
+        t.text = text;
+
+        cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
+        profileImage = GetComponentInChildren<ProfileImage>();
+
+        cardState = CardState.InHand;
     }
 
     // Update is called once per frame
     void Update()
     {  
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0) && !placed){
-            if (collider.OverlapPoint(mousePosition)){
-                if (!selected){
-                    StartCoroutine(BringToFront());
-                }
-                selected = true;
-                state.selectedCard = this;
-            }
-            else {
-                if (selected){
-                    StartCoroutine(SendToBack());
-                }
-                selected = false;
-                if (state.selectedCard == this){
-                    state.selectedCard = null;
-                }
-            }
+        
+    }
+
+    public void OnPointerDown(PointerEventData eventData){
+        
+        if (state.selectedCard != this && state.selectedCard != null){
+            StartCoroutine(state.selectedCard.SendToBack());
+            state.selectedCard = null;
+        }
+
+        switch (cardState){
+            case CardState.InHand:
+                StartCoroutine(BringToFront());
+                break;
+            case CardState.Selected:
+                StartCoroutine(SendToBack());
+                break;
+            case CardState.InSpot:
+                StartCoroutine(Move(originalPos, CardState.InHand, spot.flip));
+                spot.placedCard = null;
+                spot = null;
+                break;
+        }
+    }
+
+    public IEnumerator Move(Vector3 target, CardState endState, bool flip){
+        float time = 0f;
+
+        cardState = endState;
+        if (state.selectedCard == this && endState != CardState.Selected){
+            state.selectedCard = null;
         }
         
+        while (time <= 1f){
+            float x = scaleCurve.Evaluate(time);
+            time += Time.deltaTime / animationDuration;
+            
+            if (time > 0.5f){
+                if (flip){
+                    flip = false;  
+                    Vector3 s = profileImage.transform.localScale;
+                    s.x = -s.x;
+                    profileImage.transform.localScale = s;
+                }
+            }
+
+            transform.position = Vector2.Lerp(transform.position, target, x);        
+            cardRoot.transform.localScale = Vector3.Lerp(cardRoot.transform.localScale, Vector3.one, x);
+            yield return new WaitForFixedUpdate();
+        }
+
+
+
     }
 
     IEnumerator BringToFront(){
         float time = 0f;
+
+        cardState = CardState.Selected;
+        state.selectedCard = this;
+        
         while (time <= 1f){
             float scale = scaleCurve.Evaluate(time);
             time += Time.deltaTime / animationDuration;
+
+            if (time > 0.1f){
+                SetLayer("SelectedCard");
+            }
             
-            cardRoot.transform.localScale = new Vector3(scale, scale, 1);
+            cardRoot.transform.localScale = Vector3.Lerp(cardRoot.transform.localScale, new Vector3(scaleTo, scaleTo, 1), scale);
             yield return new WaitForFixedUpdate();
         }
+        
     }
 
-    IEnumerator SendToBack(){
-        float time = 1f;
-        while (time >= 0f){
+    public IEnumerator SendToBack(){
+        float time = 0f;
+
+        cardState = CardState.InHand;
+        if (state.selectedCard == this){
+            state.selectedCard = null;
+        }
+
+        while (time <= 1f){
             float scale = scaleCurve.Evaluate(time);
-            time -= Time.deltaTime / animationDuration;
+            time += Time.deltaTime / animationDuration;
+
+            if (time > 0.9f){
+                SetLayer("default");
+            }
             
-            cardRoot.transform.localScale = new Vector3(scale, scale, 1);
+            cardRoot.transform.localScale = Vector3.Lerp(cardRoot.transform.localScale, Vector3.one, scale);
             yield return new WaitForFixedUpdate();
         }
+        
+    }
+
+    void SetLayer(string layer){
+        foreach (var sr in GetComponentsInChildren<SpriteRenderer>()){
+            sr.sortingLayerName = layer;
+        }
+        foreach (var c in GetComponentsInChildren<Canvas>()){
+            c.sortingLayerName = layer;
+        }   
     }
 }

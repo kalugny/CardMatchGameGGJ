@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1634230403
+    locked: 0
+  - name: Spots
+    uniqueID: 2644366507
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: SelectedCard
+    uniqueID: 3496182237
     locked: 0
