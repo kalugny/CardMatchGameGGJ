@@ -89,6 +89,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
                     s.x = -s.x;
                     profileImage.transform.localScale = s;
                 }
+                SetLayer("default");
             }
 
             transform.position = Vector2.Lerp(transform.position, target, x);        
@@ -110,7 +111,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
             float scale = scaleCurve.Evaluate(time);
             time += Time.deltaTime / animationDuration;
 
-            if (time > 0.1f){
+            if (time > 0.5f){
                 SetLayer("SelectedCard");
             }
             
@@ -132,7 +133,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
             float scale = scaleCurve.Evaluate(time);
             time += Time.deltaTime / animationDuration;
 
-            if (time > 0.9f){
+            if (time > 0.5f){
                 SetLayer("default");
             }
             

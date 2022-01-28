@@ -262,7 +262,6 @@ MonoBehaviour:
     a hoax!\nLooking for: victims \U0001F346\U0001F346"
   cardState: 0
   cardRoot: {fileID: 395496102379975}
-  cardImage: {fileID: 0}
   scaleTo: 1.4
   animationDuration: 0.4
   scaleCurve:
@@ -412,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e60149cabc24ca489593cf3404681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingOrder: 12
+  sortingOrder: 14
   menHeads:
   - {fileID: 21300000, guid: 9d4dc88308a764d9195517d9989766b0, type: 3}
   - {fileID: 21300000, guid: 6c8ee56a4d96a4dc18946daa9662a732, type: 3}

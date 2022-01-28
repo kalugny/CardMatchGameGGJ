@@ -153,8 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCard: {fileID: 0}
-  spot1: {fileID: 2029390521}
-  spot2: {fileID: 1969797784}
 --- !u!4 &224934963
 Transform:
   m_ObjectHideFlags: 0
@@ -384,28 +382,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1969797784 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1969797784, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
-  m_PrefabInstance: {fileID: 2645783473224530022}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e563db8a3e7f49339dffdecd671e3aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2029390521 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2029390521, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
-  m_PrefabInstance: {fileID: 2645783473224530022}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e563db8a3e7f49339dffdecd671e3aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2038535230
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +438,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1634230403
+  m_SortingLayerID: -501086329
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4b05794f61db649a0b57c87fc465b307, type: 3}
@@ -528,7 +504,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30, y: 30}
+  m_Size: {x: 20, y: 20}
   m_EdgeRadius: 0
 --- !u!1001 &2645783473224530022
 PrefabInstance:
@@ -541,7 +517,7 @@ PrefabInstance:
       propertyPath: state
       value: 
       objectReference: {fileID: 224934962}
-    - target: {fileID: 2029390521, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+    - target: {fileID: 4527554077457348580, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: state
       value: 
       objectReference: {fileID: 224934962}
