@@ -6,9 +6,9 @@ public class Hand : MonoBehaviour
 {
 
     public GameObject cardPrefab;
-    public State state;
+    public GameLogic state;
 
-    public List<Card> cards = new List<Card>();
+    public List<GameCard> cards = new List<GameCard>();
     public int initialCards = 8;
     public float paddingBetweenCards = 0.1f;
     public float maxWidth = 9f;
@@ -29,7 +29,7 @@ public class Hand : MonoBehaviour
 
     void GenerateNewCard(){
         GameObject newCard = Instantiate(cardPrefab);
-        Card c = newCard.GetComponent<Card>();
+        GameCard c = newCard.GetComponent<GameCard>();
         c.state = state;
         cards.Add(c);
         newCard.transform.parent = transform;
