@@ -42,6 +42,9 @@ public class Params {
     public  double MarriedSemiDesparationBias = 0.2;
     public  double MarriedNoDesparationBias = 0;
     public  double MarriedTraitBias = 0;
+
+    public  int AgeMean = 35;
+    public  int AgeRange = 20;
 }
 
 public class State : MonoBehaviour
@@ -71,6 +74,7 @@ public class State : MonoBehaviour
             sentence = s;
         }
     }
+
     public Sentence[] sentences_ = new Sentence[] {
         new Sentence(Trait.CatPerson, "I LOVE MY CAT! I wish it loved me back"),
         new Sentence(Trait.CatPerson, "My cat brought me a dead bird. Not a great present, but it's the thought that counts."),
@@ -165,9 +169,127 @@ public class State : MonoBehaviour
         new Sentence(Trait.HorsebackRiding, "I love HorseBACK riding. It's my favourite way to ride a horse."),
         new Sentence(Trait.HorsebackRiding, "I won a medal for horseback riding, but actually the horse did most of the work."),
         new Sentence(Trait.HorsebackRiding, "Seeing a horse gallop is majestic! Seeing it poop, not so much.")
-
-
     };
+
+    public struct FirstName {
+        public Gender gender;
+        public string firstName;
+
+        public Sentence(Trait t, string s) {
+            trait = t;
+            firstName = s;
+        }
+    }
+
+    public FirstName[] firstNames_ = new FirstName[] {
+        new FirstName(Gender.Male, "Alex"),
+        new FirstName(Gender.Male, "Yuval"),
+        new FirstName(Gender.Male, "Yoav"),
+        new FirstName(Gender.Male, "Alon"),
+        new FirstName(Gender.Male, "Rom"),
+        new FirstName(Gender.Male, "Ran"),
+        new FirstName(Gender.Male, "Daniel"),
+        new FirstName(Gender.Male, "Liam"),
+        new FirstName(Gender.Female, "Olivia"),
+        new FirstName(Gender.Male, "Noah"),
+        new FirstName(Gender.Female, "Emma"),
+        new FirstName(Gender.Male, "Oliver"),
+        new FirstName(Gender.Female, "Ava"),
+        new FirstName(Gender.Male, "Elijah"),
+        new FirstName(Gender.Female, "Charlotte"),
+        new FirstName(Gender.Male, "William"),
+        new FirstName(Gender.Female, "Sophia"),
+        new FirstName(Gender.Male, "James"),
+        new FirstName(Gender.Female, "Amelia"),
+        new FirstName(Gender.Male, "Benjamin"),
+        new FirstName(Gender.Female, "Isabella"),
+        new FirstName(Gender.Male, "Lucas"),
+        new FirstName(Gender.Female, "Mia"),
+        new FirstName(Gender.Male, "Henry"),
+        new FirstName(Gender.Female, "Evelyn"),
+        new FirstName(Gender.Male, "Alexander"),
+        new FirstName(Gender.Female, "Harper"),
+        new FirstName(Gender.Male, "Mason"),
+        new FirstName(Gender.Female, "Camila"),
+        new FirstName(Gender.Male, "Michael"),
+        new FirstName(Gender.Female, "Gianna"),
+        new FirstName(Gender.Male, "Ethan"),
+        new FirstName(Gender.Female, "Abigail"),
+        new FirstName(Gender.Male, "Daniel"),
+        new FirstName(Gender.Female, "Luna"),
+        new FirstName(Gender.Male, "Jacob"),
+        new FirstName(Gender.Female, "Ella"),
+        new FirstName(Gender.Male, "Logan"),
+        new FirstName(Gender.Female, "Elizabeth"),
+        new FirstName(Gender.Male, "Jackson"),
+        new FirstName(Gender.Female, "Sofia"),
+        new FirstName(Gender.Male, "Levi"),
+        new FirstName(Gender.Female, "Emily"),
+        new FirstName(Gender.Male, "Sebastian"),
+        new FirstName(Gender.Female, "Avery"),
+        new FirstName(Gender.Male, "Mateo"),
+        new FirstName(Gender.Female, "Mila"),
+        new FirstName(Gender.Male, "Jack"),
+        new FirstName(Gender.Female, "Scarlett"),
+        new FirstName(Gender.Male, "Owen"),
+        new FirstName(Gender.Female, "Eleanor"),
+        new FirstName(Gender.Male, "Theodore"),
+        new FirstName(Gender.Female, "Madison"),
+        new FirstName(Gender.Male, "Aiden"),
+        new FirstName(Gender.Female, "Layla"),
+        new FirstName(Gender.Male, "Samuel"),
+        new FirstName(Gender.Female, "Penelope"),
+        new FirstName(Gender.Male, "Joseph"),
+        new FirstName(Gender.Female, "Aria"),
+        new FirstName(Gender.Male, "John"),
+        new FirstName(Gender.Female, "Chloe"),
+        new FirstName(Gender.Male, "David"),
+        new FirstName(Gender.Female, "Grace"),
+        new FirstName(Gender.Male, "Wyatt"),
+        new FirstName(Gender.Female, "Ellie"),
+        new FirstName(Gender.Male, "Matthew"),
+        new FirstName(Gender.Female, "Nora"),
+        new FirstName(Gender.Male, "Luke"),
+        new FirstName(Gender.Female, "Hazel"),
+        new FirstName(Gender.Male, "Asher"),
+        new FirstName(Gender.Female, "Zoey"),
+        new FirstName(Gender.Male, "Carter"),
+        new FirstName(Gender.Female, "Riley"),
+        new FirstName(Gender.Male, "Julian"),
+        new FirstName(Gender.Female, "Victoria"),
+        new FirstName(Gender.Male, "Grayson"),
+        new FirstName(Gender.Female, "Lily"),
+        new FirstName(Gender.Male, "Leo"),
+        new FirstName(Gender.Female, "Aurora"),
+        new FirstName(Gender.Male, "Jayden"),
+        new FirstName(Gender.Female, "Violet"),
+        new FirstName(Gender.Male, "Gabriel"),
+        new FirstName(Gender.Female, "Nova"),
+        new FirstName(Gender.Male, "Isaac"),
+        new FirstName(Gender.Female, "Hannah"),
+        new FirstName(Gender.Male, "Lincoln"),
+        new FirstName(Gender.Female, "Emilia"),
+        new FirstName(Gender.Male, "Anthony"),
+        new FirstName(Gender.Female, "Zoe"),
+        new FirstName(Gender.Male, "Hudson"),
+        new FirstName(Gender.Female, "Stella"),
+        new FirstName(Gender.Male, "Dylan"),
+        new FirstName(Gender.Female, "Everly"),
+        new FirstName(Gender.Male, "Ezra"),
+        new FirstName(Gender.Female, "Isla"),
+        new FirstName(Gender.Male, "Thomas"),
+        new FirstName(Gender.Female, "Leah"),
+        new FirstName(Gender.Male, "Charles"),
+        new FirstName(Gender.Female, "Lillian"),
+        new FirstName(Gender.Male, "Christopher"),
+        new FirstName(Gender.Female, "Addison"),
+        new FirstName(Gender.Male, "Jaxon"),
+        new FirstName(Gender.Female, "Willow"),
+        new FirstName(Gender.Male, "Maverick"),
+        new FirstName(Gender.Female, "Lucy"),
+        new FirstName(Gender.Male, "Josiah"),
+        new FirstName(Gender.Female, "Paisley")
+    }
 
     void Start()
     {

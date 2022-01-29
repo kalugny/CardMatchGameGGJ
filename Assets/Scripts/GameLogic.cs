@@ -76,6 +76,7 @@ public class GameLogic {
 
 public class GameCard {
     public Gender gender;
+    public int age;
     public Gender[] preferredGenders;
     public int attractiveness;
     public int desperation;
@@ -98,6 +99,8 @@ public class GameCard {
 
         // this.attractiveness = _R.Next(GameLogic.params_.InitialAttractivenessnMean - GameLogic.params_.InitialAttractivenessRange / 2,  GameLogic.params_.InitialAttractivenessnMean + GameLogic.params_.InitialAttractivenessRange / 2);
         this.desperation = UnityEngine.Random.Range(params_.InitialAttractivenessnMean - params_.InitialDesparationRange / 2, params_.InitialAttractivenessnMean + params_.InitialDesparationRange / 2);
+
+        this.age = UnityEngine.Random.Range(params_.AgeMean - params_.AgeRange / 2, params_.AgeMean + params_.AgeRange / 2);
 
         for (int i=0 ; i < params_.NumberOfTraits ; i++) {
             Trait newTrait = this.RandomEnumValue<Trait>();
