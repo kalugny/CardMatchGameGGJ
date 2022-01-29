@@ -36,30 +36,37 @@ public class Card : MonoBehaviour, IPointerDownHandler
     public MatchSpot spot = null;
 
     public static Card GenerateNewCard(GameCard gc, State state, GameObject cardPrefab){
-        GameObject newCard = Instantiate(cardPrefab);
-        Card c = newCard.GetComponent<Card>();
-        c.state = state;
-        c.gameCard = gc;
-        ProfileImage p = newCard.GetComponentInChildren<ProfileImage>();
-        UnityEngine.Random.InitState(gc.id);
-        if (gc.gender == Gender.Male){
-            p.CreateMenProfile();
+        Card c;
+        if (state.cards.ContainsKey(gc.id)){
+            c = state.cards[gc.id];
         }
         else {
-            p.CreateWomenProfile();
-        }
-        Text t = newCard.GetComponentInChildren<Text>();
-        t.text = TraitSentence(gc.traits[0], state) + '\n' + 
-                 TraitSentence(gc.traits[1], state) + '\n' + 
-                 TraitSentence(gc.traits[2], state);
-        
+            GameObject newCard = Instantiate(cardPrefab);
+            c = newCard.GetComponent<Card>();
+            c.state = state;
+            c.gameCard = gc;
+            ProfileImage p = newCard.GetComponentInChildren<ProfileImage>();
+            if (gc.gender == Gender.Male){
+                p.CreateMenProfile();
+            }
+            else {
+                p.CreateWomenProfile();
+            }
+            Text t = newCard.GetComponentInChildren<Text>();
+            t.text = TraitSentence(gc.traits[0], state) + '\n' + 
+                    TraitSentence(gc.traits[1], state) + '\n' + 
+                    TraitSentence(gc.traits[2], state);
+            state.cards[gc.id] = c;
+        }   
+        c.gameObject.SetActive(true); 
         return c;
     }
 
     public static string TraitSentence(Trait t, State state){
-        List<string> sentences = state.sentences.Where(s => s.trait == t).Select(s => s.sentence).ToList();
-        Debug.Log(sentences.Count);
-        return sentences[UnityEngine.Random.Range(0, sentences.Count)];
+        var sentences = state.sentences_.Where(s => s.trait == t);
+        Debug.Log(t + " " + (int)sentences.Count());
+        List<string> strings = sentences.Select(s => s.sentence).ToList();
+        return strings[UnityEngine.Random.Range(0, strings.Count)];
     }
 
     void Awake(){

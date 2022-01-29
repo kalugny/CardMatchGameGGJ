@@ -21,18 +21,15 @@ public class Hand : MonoBehaviour
     }
 
     public void NewTurn(){
-        foreach (Card card in cards)
-        {
-            if (card != null)
-            {
-                Destroy(card.gameObject);
-            }
+        foreach (var card in cards){
+            card.gameObject.SetActive(false);
         }
         cards.Clear();
 
         List<GameCard> gameCards = state.logic.GetHand();
         foreach (GameCard c in gameCards){
             Card newCard = Card.GenerateNewCard(c, state, cardPrefab);
+            newCard.icon.enabled = false;
             cards.Add(newCard);
             newCard.transform.parent = transform;
             newCard.transform.localPosition = Vector3.zero;
@@ -57,6 +54,7 @@ public class Hand : MonoBehaviour
         }
         for (int i = 0; i < cards.Count; i++){
             cards[i].transform.localPosition = new Vector3((i + 0.5f) * (cardWidth + paddingBetweenCards) - totalWidth / 2, 0, 0);
+            cards[i].originalPos = cards[i].transform.localPosition;
         }
     }
 }

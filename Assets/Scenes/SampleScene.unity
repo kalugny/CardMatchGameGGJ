@@ -182,7 +182,7 @@ MonoBehaviour:
     MarriedNoDesparationBias: 0
   hand: {fileID: 342133454}
   matchArea: {fileID: 777792255}
-  sentences:
+  sentences_:
   - trait: 0
     sentence: I LOVE MY CAT! I wish it loved me back
   - trait: 0
@@ -210,6 +210,12 @@ MonoBehaviour:
     sentence: I rather not discuss politics, because it might lead to change.
   - trait: 3
     sentence: I'll pay for dinner, but don't make me pay taxes!
+  - trait: 4
+    sentence: F___ the patriarchy!
+  - trait: 4
+    sentence: Virginia Wolfe, Oprah, Beyonce! Nuff said!
+  - trait: 4
+    sentence: Women should have more representation in the media! Not including porn.
   - trait: 5
     sentence: The true marginalised minority is straight white men!
   - trait: 5
@@ -761,7 +767,7 @@ MonoBehaviour:
   - matchLevel: 3
     image: {fileID: 21300000, guid: 183c9b867967c4d6ab2aa7f5d2a61fdb, type: 3}
   - matchLevel: 4
-    image: {fileID: 21300000, guid: 4f10a9ee539304771a478448ea9dcd4b, type: 3}
+    image: {fileID: 21300000, guid: 2b91ba0d400ab410295e68d3168542e0, type: 3}
 --- !u!4 &777792256
 Transform:
   m_ObjectHideFlags: 0
@@ -835,7 +841,7 @@ SpriteRenderer:
   m_SortingLayerID: -501086329
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7142535a4bcb741d9bd27fa6d88d89d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8954db2187d2a4d01a4de80fee4158f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -891,7 +897,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.75, y: 11.727905}
+    oldSize: {x: 23.711111, y: 14.822222}
     newSize: {x: 18.107145, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -304,7 +304,7 @@ public class Match {
 
     void AdvanceToNextLevel(double advanceProb, MatchLevel nextLevel) {
         // System.Random rand = new System.Random();
-        UnityEngine.Random.seed = (int)DateTime.Now.Ticks;
+        // UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
         advanceToss = UnityEngine.Random.value;
 
         if (advanceToss < advanceProb) {

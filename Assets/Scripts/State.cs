@@ -52,6 +52,8 @@ public class State : MonoBehaviour
     public Hand hand;
     public MatchArea matchArea;
 
+    public Dictionary<int, Card> cards = new Dictionary<int, Card>();
+
     [Serializable]
     public struct Sentence {
         public Trait trait;
@@ -62,7 +64,7 @@ public class State : MonoBehaviour
             sentence = s;
         }
     }
-    public Sentence[] sentences = new Sentence[] {
+    public Sentence[] sentences_ = new Sentence[] {
         new Sentence(Trait.CatPerson, "I LOVE MY CAT! I wish it loved me back"),
         new Sentence(Trait.CatPerson, "My cat brought me a dead bird. Not a great present, but it's the thought that counts."),
         new Sentence(Trait.CatPerson, "I'd let you touch my pussycat, but he's a scratcher!"),
@@ -75,6 +77,9 @@ public class State : MonoBehaviour
         new Sentence(Trait.Conservative, "Make America Great Again, Again!"),
         new Sentence(Trait.Conservative, "I rather not discuss politics, because it might lead to change."),
         new Sentence(Trait.Conservative, "I'll pay for dinner, but don't make me pay taxes!"),
+        new Sentence(Trait.Feminist, "F___ the patriarchy!"),
+        new Sentence(Trait.Feminist, "Virginia Wolfe, Oprah, Beyonce! Nuff said!"),
+        new Sentence(Trait.Feminist, "Women should have more representation in the media! Not including porn."),
         new Sentence(Trait.MensRightsActivist, "The true marginalised minority is straight white men!"),
         new Sentence(Trait.MensRightsActivist, "Women, stop complaining! Men wish they could stay in the kitchen!"),
         new Sentence(Trait.MensRightsActivist, "Men die younger and spend on average two years of their life holding doors for women. Tell me again who the oppressed ones are?"),
@@ -153,6 +158,8 @@ public class State : MonoBehaviour
         new Sentence(Trait.HorsebackRiding, "I love HorseBACK riding. It's my favourite way to ride a horse."),
         new Sentence(Trait.HorsebackRiding, "I won a medal for horseback riding, but actually the horse did most of the work."),
         new Sentence(Trait.HorsebackRiding, "Seeing a horse gallop is majestic! Seeing it poop, not so much.")
+
+
     };
 
     void Start()

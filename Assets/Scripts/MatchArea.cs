@@ -34,10 +34,7 @@ public class MatchArea : MonoBehaviour
     }
 
     public void UpdateMatches(){
-        foreach (Tuple<Card, Card> match in matches){
-            Destroy(match.Item1.gameObject);
-            Destroy(match.Item2.gameObject);
-        };
+
         matches.Clear();
 
         var ms = state.logic.GetMatches();
@@ -73,6 +70,7 @@ public class MatchArea : MonoBehaviour
             totalHeight = maxHeight;
         }
         
+        Debug.Log(matches.Count);
         for (int i = 0; i < matches.Count; i++){
             Tuple<Card, Card> match = matches[i];
 
