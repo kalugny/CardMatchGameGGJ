@@ -16,8 +16,8 @@ public class GameLogic {
 
     public GameLogic(Params params_) {
         this.params_ = params_;
-        deck = new Deck(params_);
         traitMatching = new TraitMatching(@"Assets/Resources/traitMatchingV3.csv");
+        deck = new Deck(params_, traitMatching);
         Debug.Log(traitMatching);
     }
 
@@ -81,7 +81,7 @@ public class GameCard {
 
     public int id;
 
-    public GameCard(Params params_, int id) {
+    public GameCard(Params params_, int id, TraitMatching traitMatching) {
         this.params_ = params_;
         this.id = id;
         this.gender = this.RandomEnumValue<Gender>();
@@ -94,7 +94,8 @@ public class GameCard {
 
         for (int i=0 ; i < params_.NumberOfTraits ; i++) {
             Trait newTrait = this.RandomEnumValue<Trait>();
-            while (this.traits.Contains(newTrait)) {
+
+            while (this.traits.Contains(newTrait) || isTraitCollides(newTrait, traitMatching)) {
                 newTrait = this.RandomEnumValue<Trait>();
             }
 
@@ -102,6 +103,17 @@ public class GameCard {
         }
 
         this.isBeingMatched = false;
+    }
+
+    public bool isTraitCollides(Trait newTrait, TraitMatching traitMatching) {
+        bool colission = false;
+        foreach (Trait t in this.traits) {
+            if (traitMatching.GetTraitPairScore(t, newTrait) < 0) {
+                colission = true;
+            }
+        }
+
+        return colission;
     }
 
     T RandomEnumValue<T> ()
@@ -146,11 +158,13 @@ public class GameCard {
 public class Deck {
     public static int cardCounter = 0;
     public List<GameCard> cards = new List<GameCard>();
+    public TraitMatching traitMatching;
 
     Params params_;
 
-    public Deck(Params params_) {
+    public Deck(Params params_, TraitMatching traitMatching) {
         this.params_ = params_;
+        this.traitMatching = traitMatching;
         this.DrawCards(params_.NumInitialCards);
     }
 
@@ -162,7 +176,7 @@ public class Deck {
             }
 
             Console.WriteLine ("Adding new card");
-            cards.Add(new GameCard(params_, cardCounter++));
+            cards.Add(new GameCard(params_, cardCounter++, traitMatching));
         }
     }
 
@@ -399,6 +413,10 @@ public class TraitMatching {
         else {
             return (score / numTraits + 1) / 2;
         }
+    }
+
+    public double GetTraitPairScore(Trait trait1, Trait trait2) {
+        return this.table[(int)trait1, (int)trait2];
     }
 }
 
