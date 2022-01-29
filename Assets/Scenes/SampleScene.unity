@@ -236,15 +236,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCard: {fileID: 0}
   params_:
-    NumNewCardsInTurn: 1
-    NumInitialCards: 6
+    NumNewCardsInTurn: 3
+    NumInitialCards: 7
     MaxAttractiveness: 100
     InitialAttractivenessnMean: 50
-    InitialAttractivenessRange: 40
+    InitialAttractivenessRange: 70
     AttractivenessDecreaseStep: 2
     MaxDesparation: 100
     InitialDesparationMean: 50
-    InitialDesparationRange: 40
+    InitialDesparationRange: 70
     DesparationIncreaseStep: 10
     DesparationDecreaseStep: 5
     DesparationBreakupStep: 10
@@ -254,14 +254,17 @@ MonoBehaviour:
     DatingFullDesparationBias: 1
     DatingSemiDesparationBias: 0.2
     DatingNoDesparationBias: 0.2
+    DatingTraitBias: -0.15
     InLoveDesparationThreshold: 70
     InLoveFullDesparationBias: 1
     InLoveSemiDesparationBias: 0.2
     InLoveNoDesparationBias: 0.1
+    InLoveTraitBias: -0.15
     MarriedDesparationThreshold: 70
     MarriedFullDesparationBias: 1
     MarriedSemiDesparationBias: 0.2
     MarriedNoDesparationBias: 0
+    MarriedTraitBias: -0.15
   hand: {fileID: 342133454}
   matchArea: {fileID: 777792255}
   lifeBar: {fileID: 1141649762}
