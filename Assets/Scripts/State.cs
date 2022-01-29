@@ -292,6 +292,18 @@ public class State : MonoBehaviour
         new FirstName(Gender.Female, "Paisley")
     };
 
+    public string[] desparationSentences = new string[] {
+        "Literally anyone would do",
+        "If you have a heartbeat I want to date you",
+        "Not looking for a prince charming",
+        "Of course I'll give you a chance!",
+        "I want a date, don't care with whom",
+        "One more disappointment and I’m adopting 20 cats",
+        "Don’t make me give up on love",
+        "My heart wouldn’t stand another blow",
+        "Who needs love, anyway…"
+    }
+
     void Start()
     {
         logic = new GameLogic(params_);

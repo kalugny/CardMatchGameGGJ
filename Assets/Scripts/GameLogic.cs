@@ -29,7 +29,7 @@ public class GameLogic {
         Console.WriteLine ("Playing turn");
         foreach (Match match in matches) {
             match.PlayMatch();
-        } 
+        }
 
         matches.RemoveAll(m => !m.card1.isBeingMatched || !m.card2.isBeingMatched);
 
@@ -44,6 +44,10 @@ public class GameLogic {
 
     public List<GameCard> GetDesperateCards(){
         return deck.GetDesperateCards();
+    }
+
+    public List<GameCard> GetAlmostDesparateCards() {
+        return deck.GetAlmostDesparateCards();
     }
 
     public List<Match> GetMatches() {
@@ -223,6 +227,10 @@ public class Deck {
     public List<GameCard> GetDesperateCards() {
         return this.cards.Where(card => card.isTooDespearate).ToList();
     }
+
+    public List<GameCard> GetAlmostDesparateCards() {
+        return this.cards.Where(card => card.desperation > (params_.MaxDesparation - params_.DesparationIncreaseStep)).ToList();
+    }
 }
 
 public class Match {
@@ -262,7 +270,7 @@ public class Match {
         }
         else if (this.level == MatchLevel.Breakup){
             card1.isBeingMatched = false;
-            card2.isBeingMatched = false;            
+            card2.isBeingMatched = false;
         }
         else {
             Console.WriteLine("ERROR");
