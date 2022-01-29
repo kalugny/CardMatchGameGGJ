@@ -59,7 +59,7 @@ public class GameLogic {
         desc += "\nMatches:\n";
 
         foreach (Match match in this.matches) {
-            desc += match.level + "\nprob: " + match.advanceProb + " toss: " + match.advanceToss + "\n";
+            desc += match.level + "\ntrait " + match.traitsScore + " prob: " + match.advanceProb + " toss: " + match.advanceToss +  "\n";
             desc += match.card1.GetDescription() + "\n";
             desc += match.card2.GetDescription() + "\n";
         }
@@ -111,7 +111,14 @@ public class GameCard {
     }
 
     public string GetDescription() {
-        return String.Format("{0}\nDesperation: {2}\nTraits: {3}, {4}, {5}", gender, attractiveness, desperation, traits[0], traits[1], traits[2]);
+        string desc = String.Format("Desperation: {0}\nTraits: ", desperation);
+
+        foreach (Trait t in traits) {
+            desc += t + " ";
+        }
+
+        return desc;
+
     }
 
     public void DecreaseDesparation(int step) {
@@ -191,6 +198,7 @@ public class Match {
     public GameCard card1, card2;
     public double advanceProb;
     public double advanceToss;
+    public double traitsScore;
 
     public TraitMatching traitMatching;
 
@@ -229,7 +237,7 @@ public class Match {
         // this.card1.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
         // this.card2.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
 
-        double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
         // double advanceProb;
 
@@ -252,7 +260,7 @@ public class Match {
         // this.card1.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
         // this.card2.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
 
-        double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
         // double advanceProb;
 
@@ -275,7 +283,7 @@ public class Match {
         this.card1.DecreaseDesparation(params_.DesparationDecreaseStep);
         this.card2.DecreaseDesparation(params_.DesparationDecreaseStep);
 
-        double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
         // double advanceProb;
 
