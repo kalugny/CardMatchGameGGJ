@@ -62,7 +62,9 @@ public class GameLogic {
 
         desc += "\nMatches:\n";
 
-        foreach (Match match in this.matches) {
+        for (int i = this.matches.Count - 1 ; i >= 0 ; i -- ) {
+        //foreach (Match match in this.matches.Reverse()) {
+            Match match = this.matches[i];
             desc += match.level + "\ntrait " + match.traitsScore + " prob: " + match.advanceProb + " toss: " + match.advanceToss +  "\n";
             desc += match.card1.GetDescription() + "\n";
             desc += match.card2.GetDescription() + "\n";
@@ -263,7 +265,7 @@ public class Match {
         // this.card1.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
         // this.card2.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
 
-        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits) + params_.DatingTraitBias;
 
         // double advanceProb;
 
@@ -286,7 +288,7 @@ public class Match {
         // this.card1.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
         // this.card2.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
 
-        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits) + params_.InLoveTraitBias;
 
         // double advanceProb;
 
@@ -309,7 +311,7 @@ public class Match {
         this.card1.DecreaseDesparation(params_.DesparationDecreaseStep);
         this.card2.DecreaseDesparation(params_.DesparationDecreaseStep);
 
-        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits) + params_.MarriedTraitBias;
 
         // double advanceProb;
 

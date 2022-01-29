@@ -29,16 +29,19 @@ public class Params {
     public  double DatingFullDesparationBias = 1;
     public  double DatingSemiDesparationBias = 0.4;
     public  double DatingNoDesparationBias = 0.2;
+    public  double DatingTraitBias = 0;
 
     public  double InLoveDesparationThreshold = 70;
     public  double InLoveFullDesparationBias = 1;
     public  double InLoveSemiDesparationBias = 0.2;
     public  double InLoveNoDesparationBias = 0.1;
+    public  double InLoveTraitBias = 0;
 
     public  double MarriedDesparationThreshold = 70;
     public  double MarriedFullDesparationBias = 1;
     public  double MarriedSemiDesparationBias = 0.2;
     public  double MarriedNoDesparationBias = 0;
+    public  double MarriedTraitBias = 0;
 }
 
 public class State : MonoBehaviour
