@@ -177,6 +177,8 @@ MonoBehaviour:
     MarriedDesparationThreshold: 0.7
     MarriedFullDesparationBias: 1
     MarriedSemiDesparationBias: 0.2
+  hand: {fileID: 342133454}
+  matchArea: {fileID: 777792255}
 --- !u!4 &224934963
 Transform:
   m_ObjectHideFlags: 0
@@ -220,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a6abb9f7804c6f857d2cee05df470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 7338501122483331065, guid: 8536ecfc17c274d39ad1400086884aed, type: 3}
   state: {fileID: 224934962}
+  cardPrefab: {fileID: 7338501122483331065, guid: 8536ecfc17c274d39ad1400086884aed, type: 3}
   cards: []
   initialCards: 9
   paddingBetweenCards: 0.1
@@ -406,6 +408,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &777792254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777792256}
+  - component: {fileID: 777792255}
+  m_Layer: 0
+  m_Name: MatchArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &777792255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777792254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b649f4d449dc24695a3fdec14d68a9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 224934962}
+  cardPrefab: {fileID: 7338501122483331065, guid: 8536ecfc17c274d39ad1400086884aed, type: 3}
+  paddingBetweenCards: 0.1
+  distanceBetweenCardsInMatch: 0.8
+  maxHeight: 5
+  matchLevelImages:
+  - matchLevel: 0
+    image: {fileID: 21300000, guid: ec982666f7dad4ed5ae14908535019d1, type: 3}
+  - matchLevel: 1
+    image: {fileID: 21300000, guid: 48b1fb8ee9e3646c3ba98873eb3f511c, type: 3}
+  - matchLevel: 2
+    image: {fileID: 21300000, guid: 08e2ecfb38f37433d9278a74b645d1e1, type: 3}
+  - matchLevel: 3
+    image: {fileID: 21300000, guid: 183c9b867967c4d6ab2aa7f5d2a61fdb, type: 3}
+  - matchLevel: 4
+    image: {fileID: 21300000, guid: 4f10a9ee539304771a478448ea9dcd4b, type: 3}
+--- !u!4 &777792256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777792254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.69, y: 0.92, z: -0.16161525}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038535230
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +598,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1821335850, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: matchPos.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821335850, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: matchPos.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1969797784, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: state
       value: 

@@ -46,6 +46,8 @@ public class State : MonoBehaviour
     public Params params_;
 
     public GameLogic logic;
+    public Hand hand;
+    public MatchArea matchArea;
 
     void Start()
     {
@@ -56,5 +58,17 @@ public class State : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnGUI(){
+        GUI.Box(new Rect(5, 5, 200, 1000), "TURN RESULTS");
+        
+        if (GUI.Button(new Rect(10, 10, 150, 100), "NEXT TURN")){
+            logic.PlayTurn();
+
+            hand.NewTurn();
+            matchArea.UpdateMatches();
+        }
+        GUI.Label(new Rect(10, 100, 200, 800), logic.GetDescription());
     }
 }

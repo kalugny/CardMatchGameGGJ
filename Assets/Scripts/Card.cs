@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,11 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour, IPointerDownHandler
 {
     public State state;
+
     public Vector3 originalPos;
     public int baseSortingOrder = 12;
+
+    public SpriteRenderer icon;
 
     public enum CardState {
         InHand,
@@ -29,6 +33,25 @@ public class Card : MonoBehaviour, IPointerDownHandler
     private ProfileImage profileImage;
 
     public MatchSpot spot = null;
+
+    public static Card GenerateNewCard(GameCard gc, State state, GameObject cardPrefab){
+        GameObject newCard = Instantiate(cardPrefab);
+        Card c = newCard.GetComponent<Card>();
+        c.state = state;
+        c.gameCard = gc;
+        ProfileImage p = newCard.GetComponentInChildren<ProfileImage>();
+        UnityEngine.Random.InitState(gc.id);
+        if (gc.gender == Gender.Male){
+            p.CreateMenProfile();
+        }
+        else {
+            p.CreateWomenProfile();
+        }
+        Text t = newCard.GetComponentInChildren<Text>();
+        t.text = String.Format("Desperation: {0}, Traits: {1}, {2}, {3}", gc.desperation, gc.traits[0], gc.traits[1], gc.traits[2]);
+        
+        return c;
+    }
 
     void Start()
     {

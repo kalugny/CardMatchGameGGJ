@@ -8,6 +8,7 @@ public class MatchButton : MonoBehaviour, IPointerDownHandler
 
     Matcher matcher;
     bool active = false;
+    public Vector3 matchPos = new Vector3(-1, -1, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +31,16 @@ public class MatchButton : MonoBehaviour, IPointerDownHandler
         
         matcher.state.logic.CreateNewMatch(matcher.spot1.placedCard.gameCard, matcher.spot2.placedCard.gameCard);
 
-        StartCoroutine(matcher.spot1.placedCard.Move(Vector3.zero, Card.CardState.InMatch, false));
-        StartCoroutine(matcher.spot2.placedCard.Move(Vector3.zero, Card.CardState.InMatch, false));;
+        // StartCoroutine(matcher.spot1.placedCard.Move(matchPos, Card.CardState.InMatch, false));
+        Destroy(matcher.spot1.placedCard.gameObject);
+        matcher.spot1.placedCard = null;
+        // StartCoroutine(matcher.spot2.placedCard.Move(matchPos, Card.CardState.InMatch, false));
+        Destroy(matcher.spot2.placedCard.gameObject);
+        matcher.spot2.placedCard = null;
+
+        matcher.state.matchArea.UpdateMatches();
+
+
     
     }
 }

@@ -7,8 +7,8 @@ using System;
 public class Hand : MonoBehaviour
 {
 
-    public GameObject cardPrefab;
     public State state;
+    public GameObject cardPrefab;
 
     public List<Card> cards = new List<Card>();
     public int initialCards = 8;
@@ -17,9 +17,25 @@ public class Hand : MonoBehaviour
 
     void Start()
     {
+        NewTurn();
+    }
+
+    public void NewTurn(){
+        foreach (Card card in cards)
+        {
+            if (card != null)
+            {
+                Destroy(card.gameObject);
+            }
+        }
+        cards.Clear();
+
         List<GameCard> gameCards = state.logic.GetHand();
         foreach (GameCard c in gameCards){
-            GenerateNewCard(c);
+            Card newCard = Card.GenerateNewCard(c, state, cardPrefab);
+            cards.Add(newCard);
+            newCard.transform.parent = transform;
+            newCard.transform.localPosition = Vector3.zero;
         }
         SpreadCards();
     }
@@ -30,24 +46,7 @@ public class Hand : MonoBehaviour
         
     }
 
-    void GenerateNewCard(GameCard gc){
-        GameObject newCard = Instantiate(cardPrefab);
-        Card c = newCard.GetComponent<Card>();
-        c.state = state;
-        c.gameCard = gc;
-        ProfileImage p = newCard.GetComponentInChildren<ProfileImage>();
-        if (gc.gender == Gender.Male){
-            p.CreateMenProfile();
-        }
-        else {
-            p.CreateWomenProfile();
-        }
-        Text t = newCard.GetComponentInChildren<Text>();
-        t.text = String.Format("Desperation: {0}, Traits: {1}", gc.desperation, gc.traits[0]);
-        cards.Add(c);
-        newCard.transform.parent = transform;
-        newCard.transform.localPosition = Vector3.zero;
-    }
+
 
     void SpreadCards(){
         float cardWidth = cards[0].cardRoot.GetComponent<SpriteRenderer>().bounds.size.x;

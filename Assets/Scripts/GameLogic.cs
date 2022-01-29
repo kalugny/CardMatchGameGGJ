@@ -31,7 +31,7 @@ public class GameLogic {
             match.PlayMatch();
         }
 
-        matches.RemoveAll(match => match.level == MatchLevel.Breakup);
+        // matches.RemoveAll(match => match.level == MatchLevel.Breakup);
 
         deck.AgeCards();
         deck.DrawCards(params_.NumNewCardsInTurn);
@@ -48,19 +48,19 @@ public class GameLogic {
 
     public string GetDescription() {
         string desc = "";
-        desc += "Hand: \n";
+        desc += "Hand: \n\n";
 
         foreach (GameCard card in this.GetHand()) {
             if (!card.isBeingMatched) {
-                desc += card.GetDescription() + "\n";
+                desc += card.GetDescription() + "\n\n";
             }
         }
 
-        desc += "Matches: \n";
+        desc += "\nMatches:\n";
 
         foreach (Match match in this.matches) {
-            desc += match.level + " ";
-            desc += match.card1.GetDescription() + "\n";
+            desc += match.level + "\n\n";
+            desc += match.card1.GetDescription() + "\n\n";
             desc += match.card2.GetDescription() + "\n\n";
         }
 
@@ -79,8 +79,11 @@ public class GameCard {
 
     Params params_;
 
-    public GameCard(Params params_) {
+    public int id;
+
+    public GameCard(Params params_, int id) {
         this.params_ = params_;
+        this.id = id;
         this.gender = this.RandomEnumValue<Gender>();
 
         this.preferredGenders = new Gender[1];
@@ -108,7 +111,7 @@ public class GameCard {
     }
 
     public string GetDescription() {
-        return String.Format("G {0} Att {1} Desp {2} Traits {3}, {4}, {5}", gender, attractiveness, desperation, traits[0], traits[1], traits[2]);
+        return String.Format("{0}\nDesperation: {2}\nTraits: {3}, {4}, {5}", gender, attractiveness, desperation, traits[0], traits[1], traits[2]);
     }
 
     public void DecreaseDesparation(int step) {
@@ -134,6 +137,7 @@ public class GameCard {
 }
 
 public class Deck {
+    public static int cardCounter = 0;
     public List<GameCard> cards = new List<GameCard>();
 
     Params params_;
@@ -151,7 +155,7 @@ public class Deck {
             }
 
             Console.WriteLine ("Adding new card");
-            cards.Add(new GameCard(params_));
+            cards.Add(new GameCard(params_, cardCounter++));
         }
     }
 
@@ -304,7 +308,9 @@ public class Match {
         Console.WriteLine("Breaking up");
         this.level = MatchLevel.Breakup;
         this.card1.IncreaseDesparation(params_.DesparationBreakupStep);
+        this.card1.isBeingMatched = false;
         this.card2.IncreaseDesparation(params_.DesparationBreakupStep);
+        this.card2.isBeingMatched = false;
     }
 }
 
