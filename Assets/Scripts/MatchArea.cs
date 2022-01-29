@@ -43,10 +43,12 @@ public class MatchArea : MonoBehaviour
         var ms = state.logic.GetMatches();
         foreach (var match in ms){
             Card card1 = Card.GenerateNewCard(match.card1, state, cardPrefab);
+            card1.cardState = Card.CardState.InMatch;
             Card card2 = Card.GenerateNewCard(match.card2, state, cardPrefab);
+            card2.cardState = Card.CardState.InMatch;
             card1.transform.parent = transform;
             card1.transform.localScale = Vector3.one;
-            ProfileImage pi = card1.GetComponentInChildren<ProfileImage>();
+            ProfileImage pi = card1.profileImage;
             Vector3 s = pi.transform.localScale;
             s.x = -s.x;
             pi.transform.localScale = s;
@@ -75,9 +77,7 @@ public class MatchArea : MonoBehaviour
             Tuple<Card, Card> match = matches[i];
 
             match.Item1.transform.localPosition = new Vector3(-distanceBetweenCardsInMatch, (i + 0.5f) * (cardHeight + paddingBetweenCards) - totalHeight / 2, 0);
-            match.Item2.transform.localPosition = new Vector3(distanceBetweenCardsInMatch, (i + 0.5f) * (cardHeight + paddingBetweenCards) - totalHeight / 2, 0);
-        
-            
+            match.Item2.transform.localPosition = new Vector3(distanceBetweenCardsInMatch, (i + 0.5f) * (cardHeight + paddingBetweenCards) - totalHeight / 2, 0);    
         }
      
     }

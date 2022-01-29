@@ -30,7 +30,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
     public float animationDuration = 1f;
     public AnimationCurve scaleCurve;
 
-    private ProfileImage profileImage;
+    public ProfileImage profileImage;
 
     public MatchSpot spot = null;
 
@@ -53,15 +53,19 @@ public class Card : MonoBehaviour, IPointerDownHandler
         return c;
     }
 
+    void Awake(){
+        cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
+        profileImage = GetComponentInChildren<ProfileImage>();
+
+        cardState = CardState.InHand;
+    }
+    
     void Start()
     {
         originalPos = transform.position;
 
 
-        cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
-        profileImage = GetComponentInChildren<ProfileImage>();
-
-        cardState = CardState.InHand;
+        
     }
 
     // Update is called once per frame
@@ -71,6 +75,8 @@ public class Card : MonoBehaviour, IPointerDownHandler
     }
 
     public void OnPointerDown(PointerEventData eventData){
+
+        Debug.Log(cardState);
         
         if (state.selectedCard != this && state.selectedCard != null){
             StartCoroutine(state.selectedCard.SendToBack());
