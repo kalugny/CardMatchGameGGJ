@@ -17,7 +17,7 @@ public class GameLogic {
     public GameLogic(Params params_) {
         this.params_ = params_;
         deck = new Deck(params_);
-        traitMatching = new TraitMatching(@"Assets/Resources/MatchmakingTraits.csv");
+        traitMatching = new TraitMatching(@"Assets/Resources/traitMatchingV3.csv");
         Debug.Log(traitMatching);
     }
 
@@ -328,7 +328,7 @@ public class TraitMatching {
             int i = 0;
             int j = 0;
             string line = reader.ReadLine();
-            line = reader.ReadLine();
+
             while (!reader.EndOfStream)
             {
                 line = reader.ReadLine();
@@ -407,44 +407,35 @@ public enum Gender {
 public enum Trait {
     CatPerson,
     DogPerson,
-    Introvert,
-    Extrovert,
-    Clean,
-    Messy,
-    Competitive,
-    LaidBack,
-    Anxious,
-    Optimist,
-    Pessimist,
-    Lazy,
-    Workaholic,
     Vegan,
-    AnimalRightsActivist,
-    ConservativeCapitalist,
+    Conservative,
     Feminist,
     MensRightsActivist,
-    SociallyLiberal,
+    Liberal,
     Religious,
-    Anarchist,
-    Authoritarian,
     Hunting,
     Fishing,
     TableTennis,
-    BirdWatching,
-    Kiting,
     Surfing,
-    KiteSurfing,
     AmusementParks,
-    Movies,
-    LongWalksOnTheBeach,
-    FeedingDucksInThePark,
+    WatchingMovies,
     SwimmingWithDolphins,
-    PettingZoos,
-    PlayingPattyCake,
+    PattyCake,
     BallroomDancing,
     RollerDisco,
     Karaoke,
-    Music
+    ListeningToMusic,
+    LizardPerson,
+    Atheist,
+    ConspiracyTheorist,
+    Cooking,
+    Museums,
+    MarioKart,
+    Chess,
+    TrivialPursuit,
+    Bowling,
+    Puns,
+    HorsebackRiding
 }
 
 // etc...
