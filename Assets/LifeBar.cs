@@ -21,9 +21,12 @@ public class LifeBar : MonoBehaviour
         
     }
 
-    public void LoseLife()
+    public void SetLife(int life)
     {
-        life--;
+        if (life < 0){
+            life = 0;
+        }
+        this.life = life;
         var sr = GetComponentInChildren<SpriteRenderer>();
         sr.sprite = lifeSprites[life];
     }

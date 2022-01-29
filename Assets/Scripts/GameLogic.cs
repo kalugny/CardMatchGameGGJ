@@ -29,13 +29,13 @@ public class GameLogic {
         Console.WriteLine ("Playing turn");
         foreach (Match match in matches) {
             match.PlayMatch();
-        }
+        } 
 
-        // matches.RemoveAll(match => match.level == MatchLevel.Breakup);
+        matches.RemoveAll(m => !m.card1.isBeingMatched || !m.card2.isBeingMatched);
 
         deck.AgeCards();
-        deck.DrawCards(params_.NumNewCardsInTurn);
         deck.RemoveDesparateCards();
+        deck.DrawCards(params_.NumNewCardsInTurn);
     }
 
     public List<GameCard> GetHand() {
@@ -213,6 +213,7 @@ public class Deck {
     }
 
     public void RemoveDesparateCards() {
+        Debug.Log("All cards = " + cards.Count);
         var desperateCards = this.cards.Where(card => card.desperation > params_.MaxDesparation);
         foreach (GameCard card in desperateCards) {
             card.isTooDespearate = true;
@@ -258,6 +259,10 @@ public class Match {
         }
         else if (this.level == MatchLevel.HappyEverAfter) {
             // do nothing, don't ruin it
+        }
+        else if (this.level == MatchLevel.Breakup){
+            card1.isBeingMatched = false;
+            card2.isBeingMatched = false;            
         }
         else {
             Console.WriteLine("ERROR");
@@ -350,9 +355,9 @@ public class Match {
         Console.WriteLine("Breaking up");
         this.level = MatchLevel.Breakup;
         this.card1.IncreaseDesparation(params_.DesparationBreakupStep);
-        this.card1.isBeingMatched = false;
+        // this.card1.isBeingMatched = false;
         this.card2.IncreaseDesparation(params_.DesparationBreakupStep);
-        this.card2.isBeingMatched = false;
+        // this.card2.isBeingMatched = false;
     }
 }
 

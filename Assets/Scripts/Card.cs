@@ -79,6 +79,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
             c.nameText.text = genderNames[UnityEngine.Random.Range(0, genderNames.Count)].firstName + ", " + gc.age;
             c.nameText.color = c.colors[(int)gc.gender];
             state.cards[gc.id] = c;
+            Debug.Log("State.cards = " + state.cards.Count);
 
         }   
         c.gameObject.SetActive(true); 

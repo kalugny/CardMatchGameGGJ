@@ -314,14 +314,14 @@ public class State : MonoBehaviour
                 Debug.Log("Turn results: " + desperateCards.Count);
                 foreach (GameCard gc in desperateCards){
                     cards[gc.id].MakeDesperate();
-                    lifeBar.LoseLife();
-                    if (lifeBar.life <= 0){
-                        gameOver = true;
-                    }
+                }
+                lifeBar.SetLife(5 - desperateCards.Count);
+                if (lifeBar.life <= 0){
+                    gameOver = true;
                 }
 
-                hand.NewTurn();
                 matchArea.UpdateMatches();
+                hand.NewTurn();
             }
             GUI.Label(new Rect(10, 100, 200, 800), logic.GetDescription());
         }

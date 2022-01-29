@@ -27,12 +27,14 @@ public class Hand : MonoBehaviour
         cards.Clear();
 
         List<GameCard> gameCards = state.logic.GetHand();
+        Debug.Log("Hand: " + gameCards.Count);
         foreach (GameCard c in gameCards){
             Card newCard = Card.GenerateNewCard(c, state, cardPrefab);
             newCard.icon.enabled = false;
             cards.Add(newCard);
             newCard.transform.parent = transform;
             newCard.transform.localPosition = Vector3.zero;
+            newCard.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             if (c.isTooDespearate){
                 newCard.MakeDesperate();
             }
