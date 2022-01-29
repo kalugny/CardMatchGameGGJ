@@ -302,7 +302,7 @@ public class State : MonoBehaviour
         "Don’t make me give up on love",
         "My heart wouldn’t stand another blow",
         "Who needs love, anyway…"
-    }
+    };
 
     void Start()
     {
@@ -315,29 +315,28 @@ public class State : MonoBehaviour
 
     }
 
-    public void OnGUI(){
-        GUI.Box(new Rect(5, 5, 200, 1000), "TURN RESULTS");
+    public void PlayTurn(){
+        logic.PlayTurn();
 
-        if (!gameOver){
-            if (GUI.Button(new Rect(10, 10, 150, 100), "NEXT TURN")){
-                logic.PlayTurn();
-
-                var desperateCards = logic.GetDesperateCards();
-                foreach (GameCard gc in desperateCards){
-                    cards[gc.id].MakeDesperate();
-                }
-                lifeBar.SetLife(5 - desperateCards.Count);
-                if (lifeBar.life <= 0){
-                    gameOver = true;
-                }
-
-                matchArea.UpdateMatches();
-                hand.NewTurn();
-            }
-            GUI.Label(new Rect(10, 100, 200, 800), logic.GetDescription());
+        var desperateCards = logic.GetDesperateCards();
+        foreach (GameCard gc in desperateCards){
+            cards[gc.id].MakeDesperate();
         }
-        else {
-            GUI.Label(new Rect(10, 100, 200, 800), "GAME OVER!");
+        lifeBar.SetLife(5 - desperateCards.Count);
+        if (lifeBar.life <= 0){
+            gameOver = true;
+        }
+
+        matchArea.UpdateMatches();
+        hand.NewTurn();
+    }
+    private GUIStyle guiStyle = new GUIStyle(); 
+ 
+         
+    public void OnGUI(){
+        if (gameOver){
+            guiStyle.fontSize = 100;
+            GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 100, 200, 100), "Game Over", guiStyle);
         }
     }
 }
