@@ -52,6 +52,13 @@ public class State : MonoBehaviour
     public Hand hand;
     public MatchArea matchArea;
 
+    [Serializable]
+    public struct Sentence {
+        public Trait trait;
+        public string sentence;
+    }
+    public Sentence[] sentences;
+
     void Start()
     {
         logic = new GameLogic(params_);

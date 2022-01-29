@@ -168,15 +168,15 @@ MonoBehaviour:
     DesparationBreakupStep: 10
     NumberOfTraits: 3
     MaxCards: 30
-    DatingDesparationThreshold: 0.7
+    DatingDesparationThreshold: 70
     DatingFullDesparationBias: 1
     DatingSemiDesparationBias: 0.2
     DatingNoDesparationBias: 0.2
-    InLoveDesparationThreshold: 0.7
+    InLoveDesparationThreshold: 70
     InLoveFullDesparationBias: 1
     InLoveSemiDesparationBias: 0.2
     InLoveNoDesparationBias: 0.1
-    MarriedDesparationThreshold: 0.7
+    MarriedDesparationThreshold: 70
     MarriedFullDesparationBias: 1
     MarriedSemiDesparationBias: 0.2
     MarriedNoDesparationBias: 0
@@ -626,11 +626,11 @@ SpriteRenderer:
   m_SortingLayerID: -501086329
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b05794f61db649a0b57c87fc465b307, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7142535a4bcb741d9bd27fa6d88d89d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 18.107145, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -682,10 +682,10 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.826667, y: 6.826667}
+    oldSize: {x: 18.75, y: 11.727905}
     newSize: {x: 18.107145, y: 10.24}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
