@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,9 +49,17 @@ public class Card : MonoBehaviour, IPointerDownHandler
             p.CreateWomenProfile();
         }
         Text t = newCard.GetComponentInChildren<Text>();
-        t.text = String.Format("Desperation: {0}, Traits: {1}, {2}, {3}", gc.desperation, gc.traits[0], gc.traits[1], gc.traits[2]);
+        t.text = TraitSentence(gc.traits[0], state) + '\n' + 
+                 TraitSentence(gc.traits[1], state) + '\n' + 
+                 TraitSentence(gc.traits[2], state);
         
         return c;
+    }
+
+    public static string TraitSentence(Trait t, State state){
+        List<string> sentences = state.sentences.Where(s => s.trait == t).Select(s => s.sentence).ToList();
+        Debug.Log(sentences.Count);
+        return sentences[UnityEngine.Random.Range(0, sentences.Count)];
     }
 
     void Awake(){
@@ -59,7 +68,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
         cardState = CardState.InHand;
     }
-    
+
     void Start()
     {
         originalPos = transform.position;

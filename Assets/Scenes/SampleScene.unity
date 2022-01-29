@@ -182,6 +182,215 @@ MonoBehaviour:
     MarriedNoDesparationBias: 0
   hand: {fileID: 342133454}
   matchArea: {fileID: 777792255}
+  sentences:
+  - trait: 0
+    sentence: I LOVE MY CAT! I wish it loved me back
+  - trait: 0
+    sentence: My cat brought me a dead bird. Not a great present, but it's the thought
+      that counts.
+  - trait: 0
+    sentence: I'd let you touch my pussycat, but he's a scratcher!
+  - trait: 1
+    sentence: My dog is my best friend in the world. Steve from work is second best.
+  - trait: 1
+    sentence: I don't deserve my dog's love, but I'll take it anyway.
+  - trait: 1
+    sentence: I wish I was ever as happy as my dog is every time I come home from
+      work.
+  - trait: 2
+    sentence: Meat is murder!
+  - trait: 2
+    sentence: If you're not Vegan you're part of the problem.
+  - trait: 2
+    sentence: I can't even tell the difference between meat and the plant based alternatives
+      I eat.
+  - trait: 3
+    sentence: Make America Great Again, Again!
+  - trait: 3
+    sentence: I rather not discuss politics, because it might lead to change.
+  - trait: 3
+    sentence: I'll pay for dinner, but don't make me pay taxes!
+  - trait: 5
+    sentence: The true marginalised minority is straight white men!
+  - trait: 5
+    sentence: Women, stop complaining! Men wish they could stay in the kitchen!
+  - trait: 5
+    sentence: Men die younger and spend on average two years of their life holding
+      doors for women. Tell me again who the oppressed ones are?
+  - trait: 6
+    sentence: Free healthcare for all!
+  - trait: 6
+    sentence: I don't like guns except in socially conscious historical war movies.
+  - trait: 6
+    sentence: I believe in affirmative action, so if you're a minority, let's hook
+      up!
+  - trait: 7
+    sentence: The real holy trinity is Jesus, you and me.
+  - trait: 7
+    sentence: Jesus is in my heart, but there's room for you too.
+  - trait: 7
+    sentence: I'll pray for your soul, whether you want me to or not.
+  - trait: 8
+    sentence: I hunt for sport. Deer are sore losers.
+  - trait: 8
+    sentence: This is my hunting rifle. There are many like it, but this one is mine.
+  - trait: 8
+    sentence: If you don't see me I didn't stand you up, I'm just wearing my camouflage
+      hunting gear.
+  - trait: 9
+    sentence: I sometimes release the fish I catch so they can tell their friends
+      how cool I am.
+  - trait: 9
+    sentence: Fishing is very calming. For me, not so much for the fish.
+  - trait: 9
+    sentence: There are plenty of fish in the sea and I'm a master fisherman.
+  - trait: 10
+    sentence: Try and stop my balls! BTW, I'm talking about ping pong.
+  - trait: 10
+    sentence: "I'll happily serve you\u2026 my baddest ping pong serve!!!"
+  - trait: 10
+    sentence: You can come over to my place, I have a ping pong table.
+  - trait: 11
+    sentence: My surfboard is with me at all times! It's a bit of a hassle actually.
+  - trait: 11
+    sentence: I can teach you how to surf, but the love of the sea must come from
+      within.
+  - trait: 11
+    sentence: I love surfing. Any time, anywhere. Actually not anywhere, only on
+      the beach.
+  - trait: 12
+    sentence: Let's ride a rollercoaster! A real one, not an emotional one.
+  - trait: 12
+    sentence: Nothing's more romantic than riding a ferris wheel together.
+  - trait: 12
+    sentence: Let's go to the carnival, i'll win as many plush toys for you as you'd
+      like.
+  - trait: 13
+    sentence: Have you seen the new Spider Man Movie? Can't wait to watch it.
+  - trait: 13
+    sentence: I like movies! I don't have many hobbies.
+  - trait: 13
+    sentence: My favorite food? The popcorn at the movies!
+  - trait: 14
+    sentence: If you haven't swum with Dolphins you haven't experienced true joy.
+  - trait: 14
+    sentence: Let's go swimming with Dolphins! I promise I won't leave you for one.
+  - trait: 14
+    sentence: If dolphins could walk, would walking with people be as amazing for
+      them as swimming with dolphins is for us?
+  - trait: 15
+    sentence: Patty Cake Patty Cake let's go on a date!
+  - trait: 15
+    sentence: You never truly know someone until you play Patty Cake with them.
+  - trait: 15
+    sentence: People who say Patty Cake is a game for kids never played Extreme Patty
+      Cake!
+  - trait: 16
+    sentence: Let me lead and I'll waltz you through a wonderful date!
+  - trait: 16
+    sentence: It might take TWO to Tango, but it takes TEN years of practice to Tango
+      well.
+  - trait: 16
+    sentence: When I hear Salsa, I think of dancing! Not spicy sauce.
+  - trait: 17
+    sentence: I got the Saturday Night Fever and roller disco is the only cure!
+  - trait: 17
+    sentence: Dancing without skates is like walking without hands. Possible, but
+      a little sad.
+  - trait: 17
+    sentence: "\xCC learned to roller disco before I learned to walk!"
+  - trait: 18
+    sentence: Let's sing karaoke! I mean, I'll sing, you listen.
+  - trait: 18
+    sentence: I only let loose in karaoke!
+  - trait: 18
+    sentence: What's your go-to karaoke song? You better have one ready.
+  - trait: 19
+    sentence: I'd take you to see my favorite band in concert, but they broke up
+      in the 80s.
+  - trait: 19
+    sentence: If you capture my heart I'll make you a mixtape.
+  - trait: 19
+    sentence: I'll let you listen to my favorite band, and all the solo projects
+      every band member ever did.
+  - trait: 20
+    sentence: No one is allergic to lizards!
+  - trait: 20
+    sentence: I have a warm relationship with my lizard. Not literally, because it's
+      cold blooded.
+  - trait: 20
+    sentence: My lizard may not be cuddly, but at least it doesn't bark or meow.
+  - trait: 21
+    sentence: If god existed I would have stopped being single by now.
+  - trait: 21
+    sentence: I don't believe in god, I believe in love!
+  - trait: 21
+    sentence: What does god and good cholesterol have in common? They're both made
+      up!
+  - trait: 22
+    sentence: Covid 19 was synthesised in a lab in China! Also, it doesn't really
+      exist!
+  - trait: 22
+    sentence: The 5G signal is used to brainwash us into believing the moon landing
+      was real.
+  - trait: 22
+    sentence: 'The only way to tell if someone is an alien: you yell "zorlop!" and
+      see if they turn.'
+  - trait: 23
+    sentence: I'll cook my way into your heart.
+  - trait: 23
+    sentence: I love the smell of cooking stew!
+  - trait: 23
+    sentence: I'll cook, you eat! You can also help me cook, though.
+  - trait: 24
+    sentence: I heard the new neo-cubist exhibition in the modern art museum is exquisite.
+  - trait: 24
+    sentence: I know a lot about art. Let's go to a museum, I'll show you.
+  - trait: 24
+    sentence: I love contemporary art. I'd tell you my favorite artist, but you probably
+      never heard of them.
+  - trait: 25
+    sentence: Let's play Mario Kart. I'll let you pick whoever you want. Just not
+      Bowser!
+  - trait: 25
+    sentence: I'll take the Rainbow Road into your heart!
+  - trait: 25
+    sentence: Sitting on the couch playing Mario Kart? BEST. DATE. EVER!
+  - trait: 26
+    sentence: If you leave yourself open I'll checkmate your heart!
+  - trait: 26
+    sentence: I don't care if you're white or black, I'll let you make the first
+      move!
+  - trait: 26
+    sentence: If dating was like chess I could tell how you're going to dump me the
+      first time we meet.
+  - trait: 27
+    sentence: I love trivia, did you know that WW2 ended more than 30 years ago?
+  - trait: 27
+    sentence: I'm a trivia champion! Sharks can't breathe if they don't swim. See?
+  - trait: 27
+    sentence: Try and test me on trivia, I never fail. No math questions!
+  - trait: 28
+    sentence: I'll kick your ass at bowling! But in a fun daty sort of way.
+  - trait: 28
+    sentence: Do you have your own bowling shoes? I do!
+  - trait: 28
+    sentence: Let's play bowling, I promise I'll go easy on you.
+  - trait: 29
+    sentence: "My favorite thing in the world are clever puns\u2026 I can't think
+      of an example."
+  - trait: 29
+    sentence: Knock Knock. Who's there? Common. Common who? Common a date with me
+      and you'll find out.
+  - trait: 29
+    sentence: Puns are fun, hon! Also fun - rhymes.
+  - trait: 30
+    sentence: I love HorseBACK riding. It's my favourite way to ride a horse.
+  - trait: 30
+    sentence: I won a medal for horseback riding, but actually the horse did most
+      of the work.
+  - trait: 30
+    sentence: Seeing a horse gallop is majestic! Seeing it poop, not so much.
 --- !u!4 &224934963
 Transform:
   m_ObjectHideFlags: 0
@@ -710,6 +919,18 @@ PrefabInstance:
       propertyPath: state
       value: 
       objectReference: {fileID: 224934962}
+    - target: {fileID: 543422461956447552, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635053192504546661, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284656823658472963, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4527554077457348580, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: state
       value: 
@@ -722,6 +943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match Spots
       objectReference: {fileID: 0}
+    - target: {fileID: 7670567988109972261, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8497701952616434355, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -732,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497701952616434355, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8266139
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 8497701952616434355, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_LocalPosition.z
