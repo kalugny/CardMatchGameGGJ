@@ -50,6 +50,10 @@ public class GameLogic {
         return deck.GetAlmostDesparateCards();
     }
 
+    public int GetHappyEndingsScore() {
+        return this.matches.Where(match => match.level == MatchLevel.HappyEverAfter).Count();
+    }
+
     public List<Match> GetMatches() {
         return matches;
     }
