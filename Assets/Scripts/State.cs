@@ -171,13 +171,14 @@ public class State : MonoBehaviour
         new Sentence(Trait.HorsebackRiding, "Seeing a horse gallop is majestic! Seeing it poop, not so much.")
     };
 
+    [Serializable]
     public struct FirstName {
         public Gender gender;
         public string firstName;
 
-        public Sentence(Trait t, string s) {
-            trait = t;
-            firstName = s;
+        public FirstName(Gender gender, string firstName){
+            this.gender = gender;
+            this.firstName = firstName;
         }
     }
 
@@ -289,7 +290,7 @@ public class State : MonoBehaviour
         new FirstName(Gender.Female, "Lucy"),
         new FirstName(Gender.Male, "Josiah"),
         new FirstName(Gender.Female, "Paisley")
-    }
+    };
 
     void Start()
     {

@@ -19,6 +19,8 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
     public Text[] texts = new Text[3];
 
+    public Text nameText;
+
     public Color[] colors = new Color[2];
 
     public enum CardState {
@@ -70,6 +72,9 @@ public class Card : MonoBehaviour, IPointerDownHandler
             foreach (var i in c.GetComponentsInChildren<Image>()){
                 i.color = c.colors[(int)gc.gender];
             }
+            var genderNames = state.firstNames_.Where(x => x.gender == gc.gender).ToList();
+            c.nameText.text = genderNames[UnityEngine.Random.Range(0, genderNames.Count)].firstName + ", " + gc.age;
+            c.nameText.color = c.colors[(int)gc.gender];
             state.cards[gc.id] = c;
 
         }   
