@@ -23,10 +23,14 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
     public Color[] colors = new Color[2];
 
+    public Sprite[] bgs = new Sprite[4];
+    public SpriteRenderer bg;
+
     public AudioClip clickSound;
     public AudioClip putSound;
 
     public enum CardState {
+        NotPlaced,
         InHand,
         Selected,
         InSpot,
@@ -34,7 +38,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
         Desperate
     };
 
-    public CardState cardState;
+    public CardState cardState = CardState.NotPlaced;
 
     public GameCard gameCard;
     
@@ -57,6 +61,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
             c = newCard.GetComponent<Card>();
             c.state = state;
             c.gameCard = gc;
+            c.bg.sprite = c.bgs[UnityEngine.Random.Range(0, c.bgs.Length)];
             foreach (var sr in newCard.GetComponentsInChildren<SpriteRenderer>()){
                 sr.sortingOrder = Card.sortingOrder++;
             }
@@ -79,7 +84,6 @@ public class Card : MonoBehaviour, IPointerDownHandler
             c.nameText.text = genderNames[UnityEngine.Random.Range(0, genderNames.Count)].firstName + ", " + gc.age;
             c.nameText.color = c.colors[(int)gc.gender];
             state.cards[gc.id] = c;
-            Debug.Log("State.cards = " + state.cards.Count);
 
         }   
         c.gameObject.SetActive(true); 
@@ -96,7 +100,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
         // cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
         profileImage = GetComponentInChildren<ProfileImage>();
 
-        cardState = CardState.InHand;
+        // cardState = CardState.InHand;
     }
 
     void Start()

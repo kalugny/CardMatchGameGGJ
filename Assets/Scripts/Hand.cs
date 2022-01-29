@@ -27,9 +27,13 @@ public class Hand : MonoBehaviour
         cards.Clear();
 
         List<GameCard> gameCards = state.logic.GetHand();
-        Debug.Log("Hand: " + gameCards.Count);
+
         foreach (GameCard c in gameCards){
             Card newCard = Card.GenerateNewCard(c, state, cardPrefab);
+            Debug.Log("Hand Card: " + c.id + ", " + newCard.cardState);
+            
+            if (newCard.cardState == Card.CardState.InMatch) continue;
+            
             newCard.icon.enabled = false;
             cards.Add(newCard);
             newCard.transform.parent = transform;
@@ -37,6 +41,9 @@ public class Hand : MonoBehaviour
             newCard.transform.localScale = new Vector3(1.5f, 1.5f, 1);
             if (c.isTooDespearate){
                 newCard.MakeDesperate();
+            }
+            else{
+                newCard.cardState = Card.CardState.InHand;
             }
         }
         SpreadCards();

@@ -34,8 +34,8 @@ public class GameLogic {
         matches.RemoveAll(m => !m.card1.isBeingMatched || !m.card2.isBeingMatched);
 
         deck.AgeCards();
-        deck.RemoveDesparateCards();
         deck.DrawCards(params_.NumNewCardsInTurn);
+        deck.RemoveDesparateCards();
     }
 
     public List<GameCard> GetHand() {
@@ -213,7 +213,6 @@ public class Deck {
     }
 
     public void RemoveDesparateCards() {
-        Debug.Log("All cards = " + cards.Count);
         var desperateCards = this.cards.Where(card => card.desperation > params_.MaxDesparation);
         foreach (GameCard card in desperateCards) {
             card.isTooDespearate = true;

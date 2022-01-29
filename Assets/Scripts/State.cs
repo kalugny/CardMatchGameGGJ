@@ -311,7 +311,6 @@ public class State : MonoBehaviour
                 logic.PlayTurn();
 
                 var desperateCards = logic.GetDesperateCards();
-                Debug.Log("Turn results: " + desperateCards.Count);
                 foreach (GameCard gc in desperateCards){
                     cards[gc.id].MakeDesperate();
                 }

@@ -40,8 +40,10 @@ public class MatchArea : MonoBehaviour
         var ms = state.logic.GetMatches();
         foreach (var match in ms){
             Card card1 = Card.GenerateNewCard(match.card1, state, cardPrefab);
+            Debug.Log("Match Card 1: " + match.card1.id + ", " + card1.cardState);
             card1.cardState = Card.CardState.InMatch;
             Card card2 = Card.GenerateNewCard(match.card2, state, cardPrefab);
+            Debug.Log("Match Card 2: " + match.card2.id + ", " + card2.cardState);
             card2.cardState = Card.CardState.InMatch;
             card1.transform.parent = transform;
             card1.transform.localScale = Vector3.one;

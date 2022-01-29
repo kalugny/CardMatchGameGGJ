@@ -823,6 +823,12 @@ MonoBehaviour:
   colors:
   - {r: 0.8235294, g: 0.60117644, b: 0.76317656, a: 1}
   - {r: 0.50306666, g: 0.6108666, b: 0.693, a: 1}
+  bgs:
+  - {fileID: 21300000, guid: 8802d2bb752784faaac1a92938ed4592, type: 3}
+  - {fileID: 21300000, guid: 4a0a1a905d5124b0e9a447489c47965c, type: 3}
+  - {fileID: 21300000, guid: c5c55f29a1c0f40b99ea86a9205c25dc, type: 3}
+  - {fileID: 21300000, guid: efa286b3fad3040a5bfb15eec98d038e, type: 3}
+  bg: {fileID: 2560496526945304517}
   clickSound: {fileID: 8300000, guid: 677f6a4f11d44411096c5f90bb672443, type: 3}
   putSound: {fileID: 8300000, guid: 893157c6ab5ec4786adf807739337768, type: 3}
   cardState: 0
