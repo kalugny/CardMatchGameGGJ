@@ -318,6 +318,11 @@ public class State : MonoBehaviour
     public void PlayTurn(){
         logic.PlayTurn();
 
+        foreach (var kvp in cards){
+            kvp.Value.gameObject.SetActive(false);
+        }
+
+
         var desperateCards = logic.GetDesperateCards();
         foreach (GameCard gc in desperateCards){
             cards[gc.id].MakeDesperate();

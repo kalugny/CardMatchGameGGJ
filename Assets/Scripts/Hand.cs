@@ -21,9 +21,6 @@ public class Hand : MonoBehaviour
     }
 
     public void NewTurn(){
-        foreach (var card in cards){
-            card.gameObject.SetActive(false);
-        }
         cards.Clear();
 
         List<GameCard> gameCards = state.logic.GetHand();

@@ -35,6 +35,10 @@ public class MatchArea : MonoBehaviour
 
     public void UpdateMatches(){
 
+        foreach (Tuple<Card, Card> match in matches){
+            match.Item1.cardState = Card.CardState.NotPlaced;
+            match.Item2.cardState = Card.CardState.NotPlaced;
+        }
         matches.Clear();
 
         var ms = state.logic.GetMatches();
