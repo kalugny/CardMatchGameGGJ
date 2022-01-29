@@ -42,6 +42,10 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
     public GameCard gameCard;
     
+    public GameObject speechBubble;
+    public static int speechBubbleSortingOrder = 0;
+    public float speechBubbleDuration = 2f;
+
     public GameObject cardRoot;
     public float scaleTo = 1.6f;
     public float animationDuration = 1f;
@@ -118,8 +122,6 @@ public class Card : MonoBehaviour, IPointerDownHandler
     }
 
     public void OnPointerDown(PointerEventData eventData){
-
-        Debug.Log(cardState);
         
         if (state.selectedCard != this && state.selectedCard != null){
             StartCoroutine(state.selectedCard.SendToBack());
@@ -236,5 +238,15 @@ public class Card : MonoBehaviour, IPointerDownHandler
         foreach (var sr in srs){                     
             sr.color = Color.gray;
         }
+    }
+
+    public IEnumerator Say(string text){
+        speechBubble.GetComponentInChildren<Text>().text = text;
+        speechBubble.GetComponent<SpriteRenderer>().sortingOrder = Card.speechBubbleSortingOrder++;
+        speechBubble.GetComponentInChildren<Canvas>().sortingOrder = Card.speechBubbleSortingOrder++;
+        speechBubble.SetActive(true);
+        yield return new WaitForSeconds(speechBubbleDuration);
+        speechBubble.SetActive(false);
+        
     }
 }

@@ -312,16 +312,20 @@ public class State : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void PlayTurn(){
         logic.PlayTurn();
 
         foreach (var kvp in cards){
+            kvp.Value.speechBubble.SetActive(false);
             kvp.Value.gameObject.SetActive(false);
         }
 
+        var almostDesperate = logic.GetAlmostDesparateCards();
+        foreach (var card in almostDesperate){
+            StartCoroutine(cards[card.id].Say(desparationSentences[UnityEngine.Random.Range(0, desparationSentences.Length)]));
+        }
 
         var desperateCards = logic.GetDesperateCards();
         foreach (GameCard gc in desperateCards){

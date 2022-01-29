@@ -50,3 +50,6 @@ TagManager:
   - name: SelectedCard
     uniqueID: 2132912181
     locked: 0
+  - name: SpeechBubble
+    uniqueID: 1414853235
+    locked: 0

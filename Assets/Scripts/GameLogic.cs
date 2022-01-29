@@ -228,7 +228,7 @@ public class Deck {
     }
 
     public List<GameCard> GetAlmostDesparateCards() {
-        return this.cards.Where(card => card.desperation > (params_.MaxDesparation - params_.DesparationIncreaseStep)).ToList();
+        return this.cards.Where(card => !card.isTooDespearate && card.desperation > (params_.MaxDesparation - params_.DesparationIncreaseStep)).ToList();
     }
 }
 
