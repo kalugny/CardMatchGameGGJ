@@ -171,12 +171,15 @@ MonoBehaviour:
     DatingDesparationThreshold: 0.7
     DatingFullDesparationBias: 1
     DatingSemiDesparationBias: 0.2
+    DatingNoDesparationBias: 0.2
     InLoveDesparationThreshold: 0.7
     InLoveFullDesparationBias: 1
     InLoveSemiDesparationBias: 0.2
+    InLoveNoDesparationBias: 0.1
     MarriedDesparationThreshold: 0.7
     MarriedFullDesparationBias: 1
     MarriedSemiDesparationBias: 0.2
+    MarriedNoDesparationBias: 0
   hand: {fileID: 342133454}
   matchArea: {fileID: 777792255}
 --- !u!4 &224934963

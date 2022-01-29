@@ -240,7 +240,7 @@ public class Match {
             advanceThreshold = traitsScore + params_.DatingSemiDesparationBias;
         }
         else {
-            advanceThreshold = traitsScore;
+            advanceThreshold = traitsScore + params_.DatingNoDesparationBias;
         }
 
         AdvanceToNextLevel(advanceThreshold, MatchLevel.InLove);
@@ -263,7 +263,7 @@ public class Match {
             advanceThreshold = traitsScore + params_.InLoveSemiDesparationBias;
         }
         else {
-            advanceThreshold = traitsScore;
+            advanceThreshold = traitsScore + params_.InLoveNoDesparationBias;
         }
 
         AdvanceToNextLevel(advanceThreshold, MatchLevel.Married);
@@ -286,7 +286,7 @@ public class Match {
             advanceThreshold = traitsScore + params_.MarriedSemiDesparationBias;
         }
         else {
-            advanceThreshold = traitsScore;
+            advanceThreshold = traitsScore + params_.MarriedNoDesparationBias;
         }
 
         AdvanceToNextLevel(advanceThreshold, MatchLevel.HappyEverAfter);
@@ -296,7 +296,7 @@ public class Match {
         // System.Random rand = new System.Random();
         double advanceProb = UnityEngine.Random.value;
 
-        if (advanceProb > advanceThreshold) {
+        if (advanceProb < advanceThreshold) {
             this.level = nextLevel;
         }
         else {
