@@ -249,7 +249,7 @@ MonoBehaviour:
     DesparationDecreaseStep: 5
     DesparationBreakupStep: 10
     NumberOfTraits: 3
-    MaxCards: 30
+    MaxCards: 1000
     DatingDesparationThreshold: 70
     DatingFullDesparationBias: 1
     DatingSemiDesparationBias: 0.2
