@@ -48,20 +48,20 @@ public class GameLogic {
 
     public string GetDescription() {
         string desc = "";
-        desc += "Hand: \n\n";
-
-        foreach (GameCard card in this.GetHand()) {
-            if (!card.isBeingMatched) {
-                desc += card.GetDescription() + "\n\n";
-            }
-        }
+        // desc += "Hand: \n\n";
+        //
+        // foreach (GameCard card in this.GetHand()) {
+        //     if (!card.isBeingMatched) {
+        //         desc += card.GetDescription() + "\n\n";
+        //     }
+        // }
 
         desc += "\nMatches:\n";
 
         foreach (Match match in this.matches) {
-            desc += match.level + "\n\n";
-            desc += match.card1.GetDescription() + "\n\n";
-            desc += match.card2.GetDescription() + "\n\n";
+            desc += match.level + "\ntrait " + match.traitsScore + " prob: " + match.advanceProb + " toss: " + match.advanceToss +  "\n";
+            desc += match.card1.GetDescription() + "\n";
+            desc += match.card2.GetDescription() + "\n";
         }
 
         return desc;
@@ -111,7 +111,14 @@ public class GameCard {
     }
 
     public string GetDescription() {
-        return String.Format("{0}\nDesperation: {2}\nTraits: {3}, {4}, {5}", gender, attractiveness, desperation, traits[0], traits[1], traits[2]);
+        string desc = String.Format("Desperation: {0}\nTraits: ", desperation);
+
+        foreach (Trait t in traits) {
+            desc += t + " ";
+        }
+
+        return desc;
+
     }
 
     public void DecreaseDesparation(int step) {
@@ -189,6 +196,9 @@ public class Deck {
 public class Match {
     public MatchLevel level;
     public GameCard card1, card2;
+    public double advanceProb;
+    public double advanceToss;
+    public double traitsScore;
 
     public TraitMatching traitMatching;
 
@@ -227,76 +237,77 @@ public class Match {
         // this.card1.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
         // this.card2.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
 
-        double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
-        double advanceThreshold;
+        // double advanceProb;
 
         if (card1.desperation >= params_.DatingDesparationThreshold &&
             card2.desperation >= params_.DatingDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.DatingFullDesparationBias;
+            advanceProb = traitsScore + params_.DatingFullDesparationBias;
         }
         else if (card1.desperation >= params_.DatingDesparationThreshold ||
             card2.desperation >= params_.DatingDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.DatingSemiDesparationBias;
+            advanceProb = traitsScore + params_.DatingSemiDesparationBias;
         }
         else {
-            advanceThreshold = traitsScore + params_.DatingNoDesparationBias;
+            advanceProb = traitsScore + params_.DatingNoDesparationBias;
         }
 
-        AdvanceToNextLevel(advanceThreshold, MatchLevel.InLove);
+        AdvanceToNextLevel(advanceProb, MatchLevel.InLove);
     }
 
     public void PlayInLoveLevel() {
         // this.card1.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
         // this.card2.DecreaseDesparation(GameLogic.params_.DesparationDecreaseStep);
 
-        double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
-        double advanceThreshold;
+        // double advanceProb;
 
         if (card1.desperation >= params_.InLoveDesparationThreshold &&
             card2.desperation >= params_.InLoveDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.InLoveFullDesparationBias;
+            advanceProb = traitsScore + params_.InLoveFullDesparationBias;
         }
         else if (card1.desperation >= params_.InLoveDesparationThreshold ||
             card2.desperation >= params_.InLoveDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.InLoveSemiDesparationBias;
+            advanceProb = traitsScore + params_.InLoveSemiDesparationBias;
         }
         else {
-            advanceThreshold = traitsScore + params_.InLoveNoDesparationBias;
+            advanceProb = traitsScore + params_.InLoveNoDesparationBias;
         }
 
-        AdvanceToNextLevel(advanceThreshold, MatchLevel.Married);
+        AdvanceToNextLevel(advanceProb, MatchLevel.Married);
     }
 
     public void PlayMarriedLevel() {
         this.card1.DecreaseDesparation(params_.DesparationDecreaseStep);
         this.card2.DecreaseDesparation(params_.DesparationDecreaseStep);
 
-        double traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
+        traitsScore = traitMatching.GetTraitMatchScore(card1.traits, card2.traits);
 
-        double advanceThreshold;
+        // double advanceProb;
 
         if (card1.desperation >= params_.MarriedDesparationThreshold &&
             card2.desperation >= params_.MarriedDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.MarriedFullDesparationBias;
+            advanceProb = traitsScore + params_.MarriedFullDesparationBias;
         }
         else if (card1.desperation >= params_.MarriedDesparationThreshold ||
             card2.desperation >= params_.MarriedDesparationThreshold) {
-            advanceThreshold = traitsScore + params_.MarriedSemiDesparationBias;
+            advanceProb = traitsScore + params_.MarriedSemiDesparationBias;
         }
         else {
-            advanceThreshold = traitsScore + params_.MarriedNoDesparationBias;
+            advanceProb = traitsScore + params_.MarriedNoDesparationBias;
         }
 
-        AdvanceToNextLevel(advanceThreshold, MatchLevel.HappyEverAfter);
+        AdvanceToNextLevel(advanceProb, MatchLevel.HappyEverAfter);
     }
 
-    void AdvanceToNextLevel(double advanceThreshold, MatchLevel nextLevel) {
+    void AdvanceToNextLevel(double advanceProb, MatchLevel nextLevel) {
         // System.Random rand = new System.Random();
-        double advanceProb = UnityEngine.Random.value;
+        UnityEngine.Random.seed = (int)DateTime.Now.Ticks;
+        advanceToss = UnityEngine.Random.value;
 
-        if (advanceProb < advanceThreshold) {
+        if (advanceToss < advanceProb) {
             this.level = nextLevel;
         }
         else {
