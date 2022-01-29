@@ -29,6 +29,9 @@ public class MatchSpot : MonoBehaviour, IPointerDownHandler
             placedCard = state.selectedCard;
             state.selectedCard.spot = this;
             StartCoroutine(state.selectedCard.Move(transform.position + extraPos, Card.CardState.InSpot, flip));
+            var audioSource = placedCard.GetComponent<AudioSource>();
+            audioSource.clip = placedCard.putSound;
+            audioSource.Play();
         }                
     }
 }

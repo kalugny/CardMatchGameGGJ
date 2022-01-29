@@ -23,6 +23,9 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
     public Color[] colors = new Color[2];
 
+    public AudioClip clickSound;
+    public AudioClip putSound;
+
     public enum CardState {
         InHand,
         Selected,
@@ -118,17 +121,23 @@ public class Card : MonoBehaviour, IPointerDownHandler
             state.selectedCard = null;
         }
 
+        var audioSource = GetComponent<AudioSource>();
+        audioSource.clip  = clickSound;
         switch (cardState){
             case CardState.InHand:
                 StartCoroutine(BringToFront());
+                
+                audioSource.Play();
                 break;
             case CardState.Selected:
                 StartCoroutine(SendToBack());
+                
                 break;
             case CardState.InSpot:
                 StartCoroutine(Move(originalPos, CardState.InHand, spot.flip));
                 spot.placedCard = null;
                 spot = null;
+                audioSource.Play();
                 break;
         }
     }

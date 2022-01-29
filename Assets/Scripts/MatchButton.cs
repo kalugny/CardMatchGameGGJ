@@ -7,6 +7,7 @@ public class MatchButton : MonoBehaviour, IPointerDownHandler
 {
 
     Matcher matcher;
+
     bool active = false;
     public Vector3 matchPos = new Vector3(-1, -1, 0);
     // Start is called before the first frame update
@@ -38,7 +39,6 @@ public class MatchButton : MonoBehaviour, IPointerDownHandler
 
         matcher.state.matchArea.UpdateMatches();
 
-
-    
+        GetComponent<AudioSource>().Play();
     }
 }
