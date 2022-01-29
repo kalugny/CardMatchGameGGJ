@@ -191,7 +191,7 @@ public class Deck {
         List<GameCard> hand = new List<GameCard>();
 
         foreach (GameCard card in this.cards) {
-            if (!card.isBeingMatched && !card.isTooDespearate) {
+            if (!card.isBeingMatched) {
                 hand.Add(card);
             }
         }

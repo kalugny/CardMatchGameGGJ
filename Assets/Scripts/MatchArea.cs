@@ -53,11 +53,13 @@ public class MatchArea : MonoBehaviour
             card2.transform.localScale = Vector3.one;
             card2.icon.sprite = matchLevelImages[(int)match.level].image;
             card2.icon.enabled = true;
+            card2.icon.sortingOrder = 20000;
 
             matches.Add(new Tuple<Card, Card>(card1, card2));
         }
-
-        OrderMatches();
+        if (ms.Count > 0){
+            OrderMatches();
+        }
     }
 
     public void OrderMatches(){

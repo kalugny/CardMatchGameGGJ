@@ -10,6 +10,8 @@ public class Card : MonoBehaviour, IPointerDownHandler
 {
     public State state;
 
+    public static int sortingOrder = 14;
+
     public Vector3 originalPos;
     public int baseSortingOrder = 12;
 
@@ -46,6 +48,10 @@ public class Card : MonoBehaviour, IPointerDownHandler
             c = newCard.GetComponent<Card>();
             c.state = state;
             c.gameCard = gc;
+            foreach (var sr in newCard.GetComponentsInChildren<SpriteRenderer>()){
+                sr.sortingOrder = Card.sortingOrder++;
+            }
+            newCard.GetComponentInChildren<Canvas>().sortingOrder = Card.sortingOrder++;
             ProfileImage p = newCard.GetComponentInChildren<ProfileImage>();
             if (gc.gender == Gender.Male){
                 p.CreateMenProfile();
@@ -58,6 +64,7 @@ public class Card : MonoBehaviour, IPointerDownHandler
                     TraitSentence(gc.traits[1], state) + '\n' + 
                     TraitSentence(gc.traits[2], state);
             state.cards[gc.id] = c;
+
         }   
         c.gameObject.SetActive(true); 
         return c;
@@ -65,13 +72,12 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
     public static string TraitSentence(Trait t, State state){
         var sentences = state.sentences_.Where(s => s.trait == t);
-        Debug.Log(t + " " + (int)sentences.Count());
         List<string> strings = sentences.Select(s => s.sentence).ToList();
         return strings[UnityEngine.Random.Range(0, strings.Count)];
     }
 
     void Awake(){
-        cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
+        // cardRoot.GetComponent<SpriteRenderer>().sortingOrder = baseSortingOrder;
         profileImage = GetComponentInChildren<ProfileImage>();
 
         cardState = CardState.InHand;
@@ -200,5 +206,9 @@ public class Card : MonoBehaviour, IPointerDownHandler
     public void MakeDesperate(){
         // Say something
         cardState = CardState.Desperate;
+        var srs = GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sr in srs){                     
+            sr.color = Color.gray;
+        }
     }
 }

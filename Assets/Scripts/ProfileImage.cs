@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProfileImage : MonoBehaviour
 {
 
-    public int sortingOrder = 12;
     public Sprite[] menHeads;
     public Sprite[] menShirts;
     public Sprite[] menNeckShadows;
@@ -56,19 +55,18 @@ public class ProfileImage : MonoBehaviour
         int eyebrow = Random.Range(0, menEyebrows.Length);
         int beard = Random.Range(0, menBeards.Length + 1);
 
-        int sortingOrder = this.sortingOrder;
-        CreateGO(menHeads[head], sortingOrder++);
-        CreateGO(menNeckShadows[neckShadow], sortingOrder++);
-        CreateGO(menShirts[shirt], sortingOrder++);
-        CreateGO(menNoses[nose], sortingOrder++);
-        CreateGO(menEyes[eye], sortingOrder++);
-        CreateGO(menEyebrows[eyebrow], sortingOrder++);
-        CreateGO(menMouths[mouth], sortingOrder++);
+        CreateGO(menHeads[head], Card.sortingOrder++);
+        CreateGO(menNeckShadows[neckShadow], Card.sortingOrder++);
+        CreateGO(menShirts[shirt], Card.sortingOrder++);
+        CreateGO(menNoses[nose], Card.sortingOrder++);
+        CreateGO(menEyes[eye], Card.sortingOrder++);
+        CreateGO(menEyebrows[eyebrow], Card.sortingOrder++);
+        CreateGO(menMouths[mouth], Card.sortingOrder++);
         if (hair < menHair.Length){
-            CreateGO(menHair[hair], sortingOrder++);
+            CreateGO(menHair[hair], Card.sortingOrder++);
         }
         if (beard < menBeards.Length){
-            CreateGO(menBeards[beard], sortingOrder++);
+            CreateGO(menBeards[beard], Card.sortingOrder++);
         }        
     }
 
@@ -80,12 +78,11 @@ public class ProfileImage : MonoBehaviour
         int hair = Random.Range(0, womenHair.Length);
         int eyebrow = Random.Range(0, womenEyebrows.Length);
 
-        int sortingOrder = this.sortingOrder;
-        CreateGO(womenHeads[head], sortingOrder++);
-        CreateGO(womenNeckShadows[neckShadow], sortingOrder++);
-        CreateGO(womenFaces[face], sortingOrder++);
-        CreateGO(womenEyebrows[eyebrow], sortingOrder++);
-        CreateGO(womenHair[hair], sortingOrder++);        
-        CreateGO(womenShirts[shirt], sortingOrder++);
+        CreateGO(womenHeads[head], Card.sortingOrder++);
+        CreateGO(womenNeckShadows[neckShadow], Card.sortingOrder++);
+        CreateGO(womenFaces[face], Card.sortingOrder++);
+        CreateGO(womenEyebrows[eyebrow], Card.sortingOrder++);
+        CreateGO(womenHair[hair], Card.sortingOrder++);        
+        CreateGO(womenShirts[shirt], Card.sortingOrder++);
     }
 }

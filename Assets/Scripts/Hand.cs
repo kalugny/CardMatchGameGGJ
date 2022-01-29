@@ -33,6 +33,9 @@ public class Hand : MonoBehaviour
             cards.Add(newCard);
             newCard.transform.parent = transform;
             newCard.transform.localPosition = Vector3.zero;
+            if (c.isTooDespearate){
+                newCard.MakeDesperate();
+            }
         }
         SpreadCards();
     }

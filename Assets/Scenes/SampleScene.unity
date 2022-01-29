@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28006450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5356793, y: 0.6372999, z: -0.25316164}
+  m_LocalPosition: {x: -8.8, y: -0.69, z: -0.25316164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141649763}
@@ -254,14 +254,17 @@ MonoBehaviour:
     DatingFullDesparationBias: 1
     DatingSemiDesparationBias: 0.2
     DatingNoDesparationBias: 0.2
+    DatingTraitBias: 0
     InLoveDesparationThreshold: 70
     InLoveFullDesparationBias: 1
     InLoveSemiDesparationBias: 0.2
     InLoveNoDesparationBias: 0.1
+    InLoveTraitBias: 0
     MarriedDesparationThreshold: 70
     MarriedFullDesparationBias: 1
     MarriedSemiDesparationBias: 0.2
     MarriedNoDesparationBias: 0
+    MarriedTraitBias: 0
   hand: {fileID: 342133454}
   matchArea: {fileID: 777792255}
   lifeBar: {fileID: 1141649762}
@@ -538,7 +541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342133453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.22, z: 0}
+  m_LocalPosition: {x: 0, y: -3.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2038535232}
@@ -615,7 +618,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1061,6 +1064,14 @@ PrefabInstance:
       propertyPath: state
       value: 
       objectReference: {fileID: 224934962}
+    - target: {fileID: 5291008120950668, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291008120950668, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -897874097
+      objectReference: {fileID: 0}
     - target: {fileID: 543422461956447552, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_LocalScale.y
       value: 2.2
@@ -1085,6 +1096,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match Spots
       objectReference: {fileID: 0}
+    - target: {fileID: 7316685990231863837, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316685990231863837, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -897874097
+      objectReference: {fileID: 0}
     - target: {fileID: 7670567988109972261, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.2
@@ -1099,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8497701952616434355, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 8497701952616434355, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
       propertyPath: m_LocalPosition.z
