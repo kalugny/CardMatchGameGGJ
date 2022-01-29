@@ -253,12 +253,12 @@ MonoBehaviour:
     DatingDesparationThreshold: 70
     DatingFullDesparationBias: 1
     DatingSemiDesparationBias: 0.2
-    DatingNoDesparationBias: 0.2
+    DatingNoDesparationBias: 0
     DatingTraitBias: -0.15
     InLoveDesparationThreshold: 70
     InLoveFullDesparationBias: 1
     InLoveSemiDesparationBias: 0.2
-    InLoveNoDesparationBias: 0.1
+    InLoveNoDesparationBias: 0
     InLoveTraitBias: -0.15
     MarriedDesparationThreshold: 70
     MarriedFullDesparationBias: 1
