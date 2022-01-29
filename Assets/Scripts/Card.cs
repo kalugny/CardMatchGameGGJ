@@ -19,7 +19,8 @@ public class Card : MonoBehaviour, IPointerDownHandler
         InHand,
         Selected,
         InSpot,
-        InMatch
+        InMatch,
+        Desperate
     };
 
     public CardState cardState;
@@ -194,5 +195,10 @@ public class Card : MonoBehaviour, IPointerDownHandler
         foreach (var c in GetComponentsInChildren<Canvas>()){
             c.sortingLayerName = layer;
         }   
+    }
+
+    public void MakeDesperate(){
+        // Say something
+        cardState = CardState.Desperate;
     }
 }

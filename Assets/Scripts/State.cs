@@ -52,6 +52,10 @@ public class State : MonoBehaviour
     public Hand hand;
     public MatchArea matchArea;
 
+    public LifeBar lifeBar;
+
+    public bool gameOver = false;
+
     public Dictionary<int, Card> cards = new Dictionary<int, Card>();
 
     [Serializable]
@@ -176,12 +180,27 @@ public class State : MonoBehaviour
     public void OnGUI(){
         GUI.Box(new Rect(5, 5, 200, 1000), "TURN RESULTS");
 
-        if (GUI.Button(new Rect(10, 10, 150, 100), "NEXT TURN")){
-            logic.PlayTurn();
+        if (!gameOver){
+            if (GUI.Button(new Rect(10, 10, 150, 100), "NEXT TURN")){
+                logic.PlayTurn();
 
-            hand.NewTurn();
-            matchArea.UpdateMatches();
+                var desperateCards = logic.GetDesperateCards();
+                Debug.Log("Turn results: " + desperateCards.Count);
+                foreach (GameCard gc in desperateCards){
+                    cards[gc.id].MakeDesperate();
+                    lifeBar.LoseLife();
+                    if (lifeBar.life <= 0){
+                        gameOver = true;
+                    }
+                }
+
+                hand.NewTurn();
+                matchArea.UpdateMatches();
+            }
+            GUI.Label(new Rect(10, 100, 200, 800), logic.GetDescription());
         }
-        GUI.Label(new Rect(10, 100, 200, 800), logic.GetDescription());
+        else {
+            GUI.Label(new Rect(10, 100, 200, 800), "GAME OVER!");
+        }
     }
 }

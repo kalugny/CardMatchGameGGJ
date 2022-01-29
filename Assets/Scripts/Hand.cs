@@ -54,7 +54,7 @@ public class Hand : MonoBehaviour
         }
         for (int i = 0; i < cards.Count; i++){
             cards[i].transform.localPosition = new Vector3((i + 0.5f) * (cardWidth + paddingBetweenCards) - totalWidth / 2, 0, 0);
-            cards[i].originalPos = cards[i].transform.localPosition;
+            cards[i].originalPos = cards[i].transform.position;
         }
     }
 }

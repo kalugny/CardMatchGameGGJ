@@ -70,7 +70,6 @@ public class MatchArea : MonoBehaviour
             totalHeight = maxHeight;
         }
         
-        Debug.Log(matches.Count);
         for (int i = 0; i < matches.Count; i++){
             Tuple<Card, Card> match = matches[i];
 

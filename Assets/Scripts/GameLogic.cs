@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using System.IO;
 using UnityEngine;
 
@@ -18,7 +19,6 @@ public class GameLogic {
         this.params_ = params_;
         traitMatching = new TraitMatching(@"Assets/Resources/traitMatchingV3.csv");
         deck = new Deck(params_, traitMatching);
-        Debug.Log(traitMatching);
     }
 
     public void CreateNewMatch(GameCard card1, GameCard card2) {
@@ -40,6 +40,10 @@ public class GameLogic {
 
     public List<GameCard> GetHand() {
         return deck.GetHand();
+    }
+
+    public List<GameCard> GetDesperateCards(){
+        return deck.GetDesperateCards();
     }
 
     public List<Match> GetMatches() {
@@ -76,6 +80,7 @@ public class GameCard {
     public List<Trait> traits = new List<Trait>();
     public bool isBeingMatched;
     // System.Random _R = new System.Random();
+    public bool isTooDespearate = false;
 
     Params params_;
 
@@ -184,7 +189,7 @@ public class Deck {
         List<GameCard> hand = new List<GameCard>();
 
         foreach (GameCard card in this.cards) {
-            if (!card.isBeingMatched) {
+            if (!card.isBeingMatched && !card.isTooDespearate) {
                 hand.Add(card);
             }
         }
@@ -203,7 +208,14 @@ public class Deck {
     }
 
     public void RemoveDesparateCards() {
-        this.cards.RemoveAll(card => card.desperation > params_.MaxDesparation);
+        var desperateCards = this.cards.Where(card => card.desperation > params_.MaxDesparation);
+        foreach (GameCard card in desperateCards) {
+            card.isTooDespearate = true;
+        }
+    }
+
+    public List<GameCard> GetDesperateCards() {
+        return this.cards.Where(card => card.isTooDespearate).ToList();
     }
 }
 
