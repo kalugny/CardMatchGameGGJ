@@ -302,7 +302,7 @@ public class State : MonoBehaviour
         "Don’t make me give up on love",
         "My heart wouldn’t stand another blow",
         "Who needs love, anyway…"
-    }
+    };
 
     void Start()
     {
