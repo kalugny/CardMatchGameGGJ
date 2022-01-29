@@ -17,6 +17,10 @@ public class Card : MonoBehaviour, IPointerDownHandler
 
     public SpriteRenderer icon;
 
+    public Text[] texts = new Text[3];
+
+    public Color[] colors = new Color[2];
+
     public enum CardState {
         InHand,
         Selected,
@@ -59,10 +63,13 @@ public class Card : MonoBehaviour, IPointerDownHandler
             else {
                 p.CreateWomenProfile();
             }
-            Text t = newCard.GetComponentInChildren<Text>();
-            t.text = TraitSentence(gc.traits[0], state) + '\n' + 
-                    TraitSentence(gc.traits[1], state) + '\n' + 
-                    TraitSentence(gc.traits[2], state);
+            for (int i = 0; i < 3; i++){
+                c.texts[i].text = TraitSentence(gc.traits[i], state);
+                
+            }
+            foreach (var i in c.GetComponentsInChildren<Image>()){
+                i.color = c.colors[(int)gc.gender];
+            }
             state.cards[gc.id] = c;
 
         }   
