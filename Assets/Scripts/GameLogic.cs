@@ -398,7 +398,11 @@ public enum Gender {
     Male
 }
 
+<<<<<<< HEAD
 public enum Trait {
+=======
+enum Trait {
+>>>>>>> c5a0a07 (Add all match level advance rules)
     CatPerson,
     DogPerson,
     Introvert,
