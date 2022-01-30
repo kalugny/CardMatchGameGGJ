@@ -58,6 +58,8 @@ public class State : MonoBehaviour
     public Hand hand;
     public MatchArea matchArea;
 
+    public MatchSpot[] matchSpots;
+
     public LifeBar lifeBar;
 
     public bool gameOver = false;
@@ -321,6 +323,8 @@ public class State : MonoBehaviour
             kvp.Value.speechBubble.SetActive(false);
             kvp.Value.gameObject.SetActive(false);
         }
+        matchSpots[0].placedCard = null;
+        matchSpots[1].placedCard = null;
 
         var almostDesperate = logic.GetAlmostDesparateCards();
         foreach (var card in almostDesperate){

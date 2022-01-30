@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Text;
 using System.Linq;
 using System.IO;
 using UnityEngine;
@@ -380,8 +381,10 @@ public class TraitMatching {
         this.table = new int[numTraits, numTraits];
 
         // Console.WriteLine("NumTraits " + numTraits);
+        string csvText = Resources.Load<TextAsset>("traitMatchingV3").text;
+        Debug.Log(csvText);
 
-        using(var reader = new StreamReader(csvPath))
+        using(var reader = new StreamReader(new MemoryStream(Encoding.UTF8.GetBytes(csvText))))
         {
             int i = 0;
             int j = 0;

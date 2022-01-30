@@ -205,6 +205,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &69772428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4527554077457348580, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+  m_PrefabInstance: {fileID: 2645783473224530022}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e563db8a3e7f49339dffdecd671e3aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &224934961
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +280,9 @@ MonoBehaviour:
     AgeRange: 20
   hand: {fileID: 342133454}
   matchArea: {fileID: 777792255}
+  matchSpots:
+  - {fileID: 69772428}
+  - {fileID: 344220981}
   lifeBar: {fileID: 1141649762}
   gameOver: 0
   sentences_:
@@ -774,6 +788,17 @@ Transform:
   m_Father: {fileID: 2038535232}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344220981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1969797784, guid: 9baabff7c004b4dad927a54129bd0000, type: 3}
+  m_PrefabInstance: {fileID: 2645783473224530022}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e563db8a3e7f49339dffdecd671e3aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
